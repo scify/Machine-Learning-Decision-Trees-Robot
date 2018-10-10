@@ -1,28 +1,172 @@
+import Matrix from "ml-matrix";
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="container">
+    <ml-cart-classifier v-bind:training-set="trainingSet"></ml-cart-classifier>
   </div>
 </template>
 
 <script>
-import HelloWorld from "./components/HelloWorld.vue";
 
-export default {
-  name: "app",
-  components: {
-    HelloWorld
-  }
-};
+    import dt from '../../Machine-Learning-JS/src/lib/decision-tree';
+
+    export default {
+        components: {
+        },
+        data() {
+            return {
+                trainingSet: []
+            }
+        },
+        computed: {
+
+        },
+        methods: {
+            getPersons(howMany) {
+                let persons = [];
+                for (let iCnt = 0; iCnt <howMany; iCnt++) {
+                    // Select male or female
+                    let baselineHairLength = 15;
+                    let baselineWeight = 60;
+                    let sGender = 'female';
+                    if (Math.random() > 0.5) {
+                        sGender = 'male';
+                        baselineHairLength -= 5;
+                        baselineWeight += 10;
+                    }
+                    // Get characteristics based on gender
+                    persons.push({
+                        hairLength: baselineHairLength + (Math.random() - 0.5) * 10,
+                        weight: baselineWeight + (Math.random() - 0.5) * 10,
+                        age: 10 + Math.random() * 30, sex: sGender
+                    });
+                }
+                return persons;
+            }
+        },
+        mounted() {
+            this.trainingSet = this.getPersons(500);
+            console.log(dt);
+        }
+    }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  .tree ul {
+    padding-top: 20px;
+    position: relative;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+  }
+
+  .tree li {
+    white-space: nowrap;
+    float: left;
+    text-align: center;
+    list-style-type: none;
+    position: relative;
+    padding: 20px 5px 0 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+  }
+
+  /*We will use ::before and ::after to draw the connectors*/
+
+  .tree li::before, .tree li::after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 50%;
+    border-top: 1px solid #ccc;
+    width: 50%;
+    height: 20px;
+  }
+  .tree li::after{
+    right: auto;
+    left: 50%;
+    border-left: 1px solid #ccc;
+  }
+
+  /*We need to remove left-right connectors from elements without
+   any siblings*/
+  .tree li:only-child::after, .tree li:only-child::before {
+    display: none;
+  }
+
+  /*Remove space from the top of single children*/
+  .tree li:only-child{
+    padding-top: 0;
+  }
+
+  /*Remove left connector from first child and
+   right connector from last child*/
+  .tree li:first-child::before, .tree li:last-child::after{
+    border: 0 none;
+  }
+  /*Adding back the vertical connector to the last nodes*/
+  .tree li:last-child::before{
+    border-right: 1px solid #ccc;
+    border-radius: 0 5px 0 0;
+    -webkit-border-radius: 0 5px 0 0;
+    -moz-border-radius: 0 5px 0 0;
+  }
+  .tree li:first-child::after{
+    border-radius: 5px 0 0 0;
+    -webkit-border-radius: 5px 0 0 0;
+    -moz-border-radius: 5px 0 0 0;
+  }
+
+  /*Time to add downward connectors from parents*/
+  .tree ul ul::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    border-left: 1px solid #ccc;
+    width: 0;
+    height: 20px;
+  }
+
+  .tree li a{
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #666;
+    font-family: arial, verdana, tahoma;
+    font-size: 11px;
+    display: inline-block;
+
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+  }
+
+  /*Time for some hover effects*/
+  /*We will apply the hover effect the the lineage of the element also*/
+  .tree li a:hover, .tree li a:hover+ul li a {
+    background: #c8e4f8;
+    color: #000;
+    border: 1px solid #94a0b4;
+  }
+  /*Connector styles on hover*/
+  .tree li a:hover+ul li::after,
+  .tree li a:hover+ul li::before,
+  .tree li a:hover+ul::before,
+  .tree li a:hover+ul ul::before{
+    border-color:  #94a0b4;
+  }
+
 </style>
