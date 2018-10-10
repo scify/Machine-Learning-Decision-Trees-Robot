@@ -5,6 +5,8 @@ It visualises a simple example in which the user is prompted to enrich the train
 
 This project uses the [decision-tree-js](https://github.com/lagodiuk/decision-tree-js) library.
 
+All images are royalty-free and were taken from [Pexels](https://www.pexels.com/).
+
 ## Project setup
 ```
 npm install
