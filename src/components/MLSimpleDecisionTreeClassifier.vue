@@ -1,9 +1,10 @@
 <template>
-    <div class="row">
-        <div class="col-md-3 mt-5">
+    <div class="row text-center">
+        <div class="col-md-12 mt-5">
             <h4 v-if="prediction">My prediction : {{ prediction }}</h4>
         </div>
-        <div class="col-md-12 treeContainer mt-5">
+        <div class="col-md-12 mt-5" v-if="tree">
+            <h2>Decision tree:</h2>
             <div class="tree" v-html="tree"></div>
         </div>
 
@@ -97,7 +98,4 @@
 </script>
 <style lang="scss">
 
-    .treeContainer {
-        text-align: center;
-    }
 </style>

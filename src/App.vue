@@ -14,7 +14,6 @@
             </div>
         </div>
         <div class="mt-5 text-center">
-            <h2>Decision tree:</h2>
             <!--<ml-cart-classifier v-bind:training-set="trainingSet"></ml-cart-classifier>-->
             <ml-simple-dt-classifier v-bind:training-set="trainingSet" v-bind:element="element"></ml-simple-dt-classifier>
         </div>
