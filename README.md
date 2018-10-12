@@ -5,7 +5,9 @@ It visualises a simple example in which the user is prompted to enrich the train
 
 This project uses the [decision-tree-js](https://github.com/lagodiuk/decision-tree-js) library.
 
-All images are royalty-free and were taken from [Pexels](https://www.pexels.com/).
+All dataset images are royalty-free and were taken from [Pexels](https://www.pexels.com/).
+
+<div>Icons made by <a href="https://www.flaticon.com/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
 ## Project setup
 ```
