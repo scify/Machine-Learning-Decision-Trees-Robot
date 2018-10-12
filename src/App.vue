@@ -48,7 +48,7 @@
                 <div class="selectionContainer " v-if="element">
                     <div class="row element-container mt-3">
                         <div class="col-md-12">
-                            Εκπαίδευσε το Θαλή! Τι αφορά η παραπάνω εικόνα;
+                            Εκπαίδευσε το Θαλή! Τί αφορά η παραπάνω εικόνα;
                         </div>
                         <div class="col-md-6">
                             <button v-on:click="addElementToTrainingSet(features[0])" type="button"
@@ -110,6 +110,7 @@
         methods: {
             getTrainingSet() {
                 this.trainingSet = [];
+                this.decisionTree = null;
                 let instance = this;
                 $.getJSON("set.json", function (object) {
                     instance.allData = object.data;
@@ -118,17 +119,17 @@
                 });
             },
             setRandomElementFromTrainingSet() {
+                if (this.allData.length>0){
+                    let currentElement = this.element;
+                    do {
+                        let index = Math.floor(Math.random() * this.allData.length);
+                        this.element = this.allData[index];
+                    }
+                    while(this.element===currentElement);
 
-                let newElement = this.element;
-                while (this.element===newElement){ //choose another one
-                    let index = Math.floor(Math.random() * this.allData.length);
-                    newElement = this.allData[index];
-                    this.element = this.allData[index];
+                    if (this.trainingSet.length>0)
+                        this.robotText ="Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
                 }
-
-                if (this.trainingSet.length>0)
-                    this.robotText ="Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
-
             },
             addElementToTrainingSet(label) {
                 this.trainingSet.unshift({
