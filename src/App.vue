@@ -15,24 +15,6 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row mt-5">
-                        <div class="col-md-6">
-                            <button v-on:click="addElementToTrainingSet(features[0])" type="button" class="selectionBtn btn btn-lg btn-apple mb-2">{{ features[0] }}</button>
-                        </div>
-                        <div class="col-md-6">
-                            <button v-on:click="addElementToTrainingSet(features[1])" type="button" class="selectionBtn btn btn-lg btn-orange">{{ features[1] }}</button>
-                        </div>
-                    </div>
-                    <div class="row text-center mt-4">
-                        <div class="col">
-                            <button v-on:click="setRandomElementFromTrainingSet" type="button" class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!</button>
-                        </div>
-                    </div>
-                    <div class="row mt-4">
-                        <div class="col">
-                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info">Πάμε από την αρχή...</button>
-                        </div>
-                    </div>
                 </div>
             </div>
             <div class="col-md-4">
@@ -40,11 +22,15 @@
                     <robot-assistant v-bind:saying="robotText"></robot-assistant>
                     <div class="row mt-5">
                         <div class="col-md-12 text-center">
-                            <button v-on:click="classify" type="button" class="btn btn-lg btn-info robot-action">Δοκίμασέ με!</button>
+                            <button v-on:click="classify" type="button" class="btn btn-lg btn-info robot-action">
+                                Δοκίμασέ με!
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="training-set-container mt-5" v-if="trainingSet.length">
+            </div>
+            <div class="col-md-4">
+                <div class="training-set-container" v-if="trainingSet.length">
                     <h4>Τι έχω μάθει μέχρι τώρα:</h4>
                     <div class="set-item row mt-3" v-for="item in trainingSet" :key="item.id">
                         <div class="col-sm-3">
@@ -53,15 +39,48 @@
                         <div class="col-sm-9">
                             <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <div class="col-md-4" v-if="tree">
-                <div class="row text-center tree-container">
-                    <div class="col-md-12">
-                        <h2>Πώς σκέφτομαι:</h2>
-                        <div class="tree mt-3" v-html="tree"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="selectionContainer " v-if="element">
+                    <div class="row element-container mt-3">
+                        <div class="col-md-12">
+                            Εκπαίδευσε το Θαλή! Τι αφορά η παραπάνω εικόνα;
+                        </div>
+                        <div class="col-md-6">
+                            <button v-on:click="addElementToTrainingSet(features[0])" type="button"
+                                    class="selectionBtn btn btn-lg btn-apple mt-3 mb-2">{{ features[0] }}
+                            </button>
+                        </div>
+                        <div class="col-md-6">
+                            <button v-on:click="addElementToTrainingSet(features[1])" type="button"
+                                    class="selectionBtn btn btn-lg btn-orange mt-3">{{ features[1] }}
+                            </button>
+                        </div>
+                        <div class="col-md-12">
+                            <hr>
+                            <button v-on:click="setRandomElementFromTrainingSet" type="button"
+                                    class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
+                            </button>
+                            <br><br>
+                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info">Πάμε από την
+                                αρχή...
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-8" v-if="tree">
+                <div class="mt-3 text-center tree-container">
+                    <div class="selectionContainer">
+                        <div class="col-md-12">
+                            <h2>Πώς σκέφτομαι:</h2>
+                            <div class="tree mt-3" v-html="tree"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -74,8 +93,7 @@
     import $ from 'jquery'
 
     export default {
-        components: {
-        },
+        components: {},
         data() {
             return {
                 allData: [],
@@ -88,8 +106,7 @@
                 decisionTree: null
             }
         },
-        computed: {
-        },
+        computed: {},
         methods: {
             getTrainingSet() {
                 this.trainingSet = [];
@@ -101,11 +118,16 @@
                 });
             },
             setRandomElementFromTrainingSet() {
+
                 let index = Math.floor(Math.random() * this.allData.length);
                 this.element = this.allData[index];
+
+                if (this.trainingSet.length>0)
+                    this.robotText ="Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
+
             },
             addElementToTrainingSet(label) {
-                this.trainingSet.push({
+                this.trainingSet.unshift({
                     ...this.element,
                     // setting a unique id so that we can add the element multiple times in our training set
                     // and be able to use v-for to show the training set's contents.
@@ -121,7 +143,7 @@
                 this.tree = null;
             },
             train() {
-                if(!this.trainingSet.length)
+                if (!this.trainingSet.length)
                     this.robotText = 'Δεν έχω αρκετά δεδομένα για να μάθω...';
 
                 else {
@@ -137,7 +159,7 @@
                 }
             },
             classify() {
-                if(!this.decisionTree)
+                if (!this.decisionTree)
                     this.robotText = 'Δεν έχω αρκετά δεδομένα για να κάνω πρόβλεψη.';
                 else {
                     this.prediction = this.decisionTree.predict(this.element);
@@ -148,7 +170,7 @@
             treeToHtml(tree) {
                 // only leafs containing category
                 if (tree.category) {
-                    return  ['<ul>',
+                    return ['<ul>',
                         '<li>',
                         '<a href="#">',
                         '<b>', tree.category, '</b>',
@@ -157,7 +179,7 @@
                         '</ul>'].join('');
                 }
 
-                return  ['<ul>',
+                return ['<ul>',
                     '<li>',
                     '<a href="#">',
                     '<b>', tree.attribute, ' ', tree.predicateName, ' ', tree.pivot, ' ?</b>',
@@ -228,6 +250,11 @@
         padding: 20px;
         border-radius: 10px;
         border: 3px solid #3F51B5;
+    }
+    .training-set-container{
+        height:400px;
+        overflow: hidden;
+        overflow-y:scroll;
     }
 
     .set-item {
