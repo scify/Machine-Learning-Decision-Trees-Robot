@@ -45,13 +45,13 @@
                     </div>
                 </div>
                 <div class="training-set-container mt-5" v-if="trainingSet.length">
-                    <h4>Τι έχω στο καλάθι μου:</h4>
+                    <h4>Τι έχω μάθει μέχρι τώρα:</h4>
                     <div class="set-item row mt-3" v-for="item in trainingSet" :key="item.id">
                         <div class="col-sm-3">
                             <img class="img-thumb" :src="item.img">
                         </div>
                         <div class="col-sm-9">
-                            <p class="label">{{ item.label }}</p>
+                            <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
                         </div>
 
                     </div>
@@ -241,7 +241,6 @@
             top: 50%;
             transform: translateY(-50%);
             font-size: x-large;
-            font-weight: bold;
         }
     }
 
