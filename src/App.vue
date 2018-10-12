@@ -119,8 +119,12 @@
             },
             setRandomElementFromTrainingSet() {
 
-                let index = Math.floor(Math.random() * this.allData.length);
-                this.element = this.allData[index];
+                let newElement = this.element;
+                while (this.element===newElement){ //choose another one
+                    let index = Math.floor(Math.random() * this.allData.length);
+                    newElement = this.allData[index];
+                    this.element = this.allData[index];
+                }
 
                 if (this.trainingSet.length>0)
                     this.robotText ="Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
