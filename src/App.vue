@@ -280,6 +280,7 @@
 
     .tree-container {
         min-height: 400px;
+        height:auto;
     }
 
     .robot-container {
