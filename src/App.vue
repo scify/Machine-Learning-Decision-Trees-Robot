@@ -2,7 +2,7 @@
     <div class="mt-5" id="main">
         <div class="row">
             <div class="col-md-4">
-                <div class="selectionContainer" v-if="element">
+                <div class="selectionContainer box" v-if="element">
                     <div class="row element-container">
                         <div class="img-container">
                             <img :src="element.img">
@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="robot-container">
+                <div class="robot-container box">
                     <robot-assistant v-bind:saying="robotText"></robot-assistant>
                     <div class="row mt-5">
                         <div class="col-md-12 text-center">
@@ -30,7 +30,7 @@
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="training-set-container" v-if="trainingSet.length">
+                <div class="training-set-container box" v-if="trainingSet.length">
                     <h4>Τι έχω μάθει μέχρι τώρα:</h4>
                     <div class="set-item row mt-3" v-for="item in trainingSet" :key="item.id">
                         <div class="col-sm-3">
@@ -45,22 +45,20 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <div class="selectionContainer " v-if="element">
-                    <div class="row element-container mt-3">
-                        <div class="col-md-12">
-                            Εκπαίδευσε το Θαλή! Τί αφορά η παραπάνω εικόνα;
-                        </div>
-                        <div class="col-md-6">
+                <div class="selectionContainer box " v-if="element">
+                    Εκπαίδευσε το Θαλή! Τι αφορά η παραπάνω εικόνα;
+                    <div class="row element-container">
+                        <div class="col-lg-6">
                             <button v-on:click="addElementToTrainingSet(features[0])" type="button"
                                     class="selectionBtn btn btn-lg btn-apple mt-3 mb-2">{{ features[0] }}
                             </button>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-lg-6">
                             <button v-on:click="addElementToTrainingSet(features[1])" type="button"
                                     class="selectionBtn btn btn-lg btn-orange mt-3">{{ features[1] }}
                             </button>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-lg-12">
                             <hr>
                             <button v-on:click="setRandomElementFromTrainingSet" type="button"
                                     class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
@@ -71,11 +69,12 @@
                             </button>
                         </div>
                     </div>
+
                 </div>
             </div>
 
             <div class="col-md-8" v-if="tree">
-                <div class="mt-3 text-center tree-container">
+                <div class="text-center tree-container box">
                     <div class="selectionContainer">
                         <div class="col-md-12">
                             <h2>Πώς σκέφτομαι:</h2>
@@ -119,16 +118,16 @@
                 });
             },
             setRandomElementFromTrainingSet() {
-                if (this.allData.length>0){
+                if (this.allData.length > 0) {
                     let currentElement = this.element;
                     do {
                         let index = Math.floor(Math.random() * this.allData.length);
                         this.element = this.allData[index];
                     }
-                    while(this.element===currentElement);
+                    while (this.element === currentElement);
 
-                    if (this.trainingSet.length>0)
-                        this.robotText ="Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
+                    if (this.trainingSet.length > 0)
+                        this.robotText = "Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
                 }
             },
             addElementToTrainingSet(label) {
@@ -224,6 +223,10 @@
         padding: 10px;
         color: #FFFFFF;
         font-size: 18px;
+        @include media-breakpoint-down(md) {
+            padding: 5px;
+            font-size: 12px;
+        }
     }
 
     .btn-apple {
@@ -251,15 +254,10 @@
         margin-bottom: -20px;
     }
 
-    .robot-container, .training-set-container, .tree-container {
-        padding: 20px;
-        border-radius: 10px;
-        border: 3px solid #3F51B5;
-    }
-    .training-set-container{
-        height:400px;
+    .training-set-container {
+        height: 400px;
         overflow: hidden;
-        overflow-y:scroll;
+        overflow-y: scroll;
     }
 
     .set-item {
@@ -272,7 +270,11 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
+            line-height: 1.1em;
             font-size: x-large;
+            @include media-breakpoint-down(md) {
+                font-size: medium;
+            }
         }
     }
 
@@ -291,13 +293,20 @@
     .robot {
         img {
             width: 100%;
+            max-height:200px;
+            @include media-breakpoint-down(md) {
+                font-size: medium;
+            }
+
         }
     }
 
     .selectionBtn {
-        width: 200px;
+        max-width: 180px;
+        width: 100%;
         height: 150px;
-        font-size: xx-large;
+        font-size: 2vw;
+
     }
 
     .tree * {
@@ -305,22 +314,28 @@
         padding: 0;
     }
 
+    .box {
+        padding: 20px;
+        border-radius: 10px;
+        border: 3px solid #3F51B5;
+        height: 400px;
+        margin-bottom: 20px;
+    }
+
     .selectionContainer {
         text-align: center;
 
         .element-container {
-            padding: 10px;
-            border-radius: 10px;
-            border: 3px solid #3F51B5;
-            height: 400px;
 
             .img-container {
-                height: 60%;
-                width: 100%;
+                width: 80%;
+                margin: auto;
                 text-align: center;
                 img {
+                    max-height: 200px;
+                    width: auto;
                     max-width: 100%;
-                    max-height: 100%;
+                    margin:auto;
                     border-radius: 10px;
                 }
             }
@@ -332,6 +347,10 @@
 
             .element-info {
                 text-align: left;
+                p {
+                    margin-bottom: 0;
+                }
+            ;
             }
 
         }
@@ -454,5 +473,14 @@
     .tree li a:hover + ul ul::before {
         border-color: #94a0b4;
     }
+
+    @include media-breakpoint-down(md) {
+        .btn {
+            height: auto;
+            font-size: medium;
+        }
+    }
+
+
 
 </style>
