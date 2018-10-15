@@ -278,7 +278,7 @@
         }
     }
 
-    .tree-container {
+    .tree-container.box {
         min-height: 400px;
         height:auto;
     }
