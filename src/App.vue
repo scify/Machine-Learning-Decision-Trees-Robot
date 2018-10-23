@@ -306,7 +306,7 @@
         max-width: 180px;
         width: 100%;
         height: 150px;
-        font-size: 2vw;
+        font-size: 25px;
 
     }
 
