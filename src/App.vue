@@ -60,7 +60,7 @@
                         </div>
                         <div class="col-lg-12">
                             <hr>
-                            <button v-on:click="setRandomElementFromTrainingSet" type="button"
+                            <button v-on:click="fetchNextInstance" type="button"
                                     class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
                             </button>
                             <br><br>
@@ -89,7 +89,8 @@
 
 <script>
     import dt from './lib/decision-tree';
-    import $ from 'jquery'
+    import $ from 'jquery';
+    import _ from 'lodash';
 
     export default {
         components: {},
@@ -114,28 +115,30 @@
                 $.getJSON("set.json", function (object) {
                     instance.allData = object.data;
                     instance.features = object.features;
-                    instance.setRandomElementFromTrainingSet();
+                    instance.fetchNextInstance();
                 });
             },
-            setRandomElementFromTrainingSet() {
+            fetchNextInstance() {
+
                 if (this.allData.length > 0) {
                     let currentElement = this.element;
-                    do {
-                        let index = Math.floor(Math.random() * this.allData.length);
-                        this.element = this.allData[index];
+                    let newElementIndex =0;
+                    if (currentElement !== null){
+                        let indexOfCurrentElement = _.findIndex(this.allData, function (o) {
+                            return o.id === currentElement.id
+                        });
+                        if (indexOfCurrentElement < this.allData.length - 1)
+                            newElementIndex = indexOfCurrentElement + 1;
                     }
-                    while (this.element === currentElement);
-
-                    if (this.trainingSet.length > 0)
-                        this.robotText = "Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
+                    this.element = this.allData[newElementIndex];
                 }
+                if (this.trainingSet.length > 0)
+                    this.robotText = "Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
+
             },
             addElementToTrainingSet(label) {
                 this.trainingSet.unshift({
                     ...this.element,
-                    // setting a unique id so that we can add the element multiple times in our training set
-                    // and be able to use v-for to show the training set's contents.
-                    id: Math.floor((Math.random() * 1000) + 1),
                     label: label
                 });
                 this.train();
@@ -280,7 +283,7 @@
 
     .tree-container.box {
         min-height: 400px;
-        height:auto;
+        height: auto;
     }
 
     .robot-container {
@@ -294,7 +297,7 @@
     .robot {
         img {
             width: 100%;
-            max-height:200px;
+            max-height: 200px;
             @include media-breakpoint-down(md) {
                 font-size: medium;
             }
@@ -336,7 +339,7 @@
                     max-height: 200px;
                     width: auto;
                     max-width: 100%;
-                    margin:auto;
+                    margin: auto;
                     border-radius: 10px;
                 }
             }
@@ -481,7 +484,6 @@
             font-size: medium;
         }
     }
-
 
 
 </style>
