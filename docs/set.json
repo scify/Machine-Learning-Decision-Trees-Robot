@@ -1,0 +1,78 @@
+{
+  "features": [
+    "Μήλο",
+    "Πορτοκάλι"
+  ],
+  "data": [
+    {
+      "id":1,
+      "χρώμα": "κόκκινο",
+      "κοτσάνι": true,
+      "img": "https://images.pexels.com/photos/39803/pexels-photo-39803.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 50
+    },
+    {
+      "id":2,
+      "χρώμα": "πράσινο",
+      "κοτσάνι": true,
+      "img": "instances/orange_green_35_yes.png",
+      "βάρος": 35
+    },
+    {
+      "id":3,
+      "χρώμα": "χρυσό",
+      "κοτσάνι": false,
+      "img": "instances/apple_gold_150_no.png",
+      "βάρος": 150
+    },
+    {
+      "id":4,
+      "χρώμα": "πορτοκαλί",
+      "κοτσάνι": true,
+      "img": "https://images.unsplash.com/photo-1485381473713-c6131409c0be?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=b4a7612415f6780eb09a06affbdcbd66&auto=format&fit=crop&w=2020&q=80",
+      "βάρος": 56
+    },
+    {
+      "id":5,
+      "χρώμα": "πορτοκαλί",
+      "κοτσάνι": false,
+      "img": "https://images.pexels.com/photos/42059/citrus-diet-food-fresh-42059.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 60
+    },
+    {
+      "id":6,
+      "χρώμα": "κόκκινο",
+      "κοτσάνι": true,
+      "img": "https://images.pexels.com/photos/588587/pexels-photo-588587.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 45
+    },
+    {
+      "id":7,
+      "χρώμα": "κόκκινο",
+      "κοτσάνι": true,
+      "img": "https://images.pexels.com/photos/206959/pexels-photo-206959.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 65
+    },
+    {
+      "id":8,
+      "χρώμα": "πορτοκαλί",
+      "κοτσάνι": false,
+      "img": "https://images.pexels.com/photos/52533/orange-fruit-vitamins-healthy-eating-52533.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 37
+    },
+    {
+      "id":9,
+      "χρώμα": "πράσινο",
+      "κοτσάνι": true,
+      "img": "https://images.pexels.com/photos/38068/pexels-photo-38068.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 50
+    },
+    {
+      "id":10,
+      "χρώμα": "πορτοκαλί",
+      "κοτσάνι": false,
+      "img": "https://images.pexels.com/photos/161559/background-bitter-breakfast-bright-161559.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=640&w=423",
+      "βάρος": 62
+    }
+  ]
+}
