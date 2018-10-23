@@ -107,9 +107,10 @@
         },
         computed: {},
         methods: {
-            getTrainingSet() {
+            reload() {
                 this.trainingSet = [];
                 this.decisionTree = null;
+                this.element = null;
                 let instance = this;
                 $.getJSON("set.json", function (object) {
                     instance.allData = object.data;
@@ -143,7 +144,7 @@
                 this.train();
             },
             resetState() {
-                this.getTrainingSet();
+                this.reload();
                 this.prediction = null;
                 this.robotText = 'Γεία! Είμαι ο Θαλής! Εκπαίδευσέ με για να γίνω σοφότερος!';
                 this.tree = null;
@@ -257,7 +258,7 @@
     }
 
     .training-set-container {
-        height: 400px;
+        height: 350px;
         overflow: hidden;
         overflow-y: scroll;
     }
@@ -281,12 +282,12 @@
     }
 
     .tree-container.box {
-        min-height: 400px;
+        min-height: 350px;
         height: auto;
     }
 
     .robot-container {
-        height: 400px;
+        height: 350px;
     }
 
     .robot-action {
@@ -307,7 +308,7 @@
     .selectionBtn {
         max-width: 180px;
         width: 100%;
-        height: 150px;
+        height: 100px;
         font-size: 25px;
 
     }
@@ -321,7 +322,7 @@
         padding: 20px;
         border-radius: 10px;
         border: 3px solid #3F51B5;
-        height: 400px;
+        height: 350px;
         margin-bottom: 20px;
     }
 
