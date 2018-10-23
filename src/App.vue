@@ -64,8 +64,7 @@
                                     class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
                             </button>
                             <br><br>
-                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info">Πάμε από την
-                                αρχή...
+                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info">Ξέχασε ό,τι ξέρεις...
                             </button>
                         </div>
                     </div>
