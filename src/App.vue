@@ -48,12 +48,12 @@
                 <div class="selectionContainer box " v-if="element">
                     Εκπαίδευσε το Θαλή! Τι αφορά η παραπάνω εικόνα;
                     <div class="row element-container">
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="padding-left: 0; padding-right: 4px">
                             <button v-on:click="addElementToTrainingSet(features[0])" type="button"
                                     class="selectionBtn btn btn-lg btn-apple mt-3 mb-2">{{ features[0] }}
                             </button>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-6" style="padding-right: 0; padding-left: 4px">
                             <button v-on:click="addElementToTrainingSet(features[1])" type="button"
                                     class="selectionBtn btn btn-lg btn-orange mt-3">{{ features[1] }}
                             </button>
@@ -64,7 +64,7 @@
                                     class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
                             </button>
                             <br><br>
-                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info">Ξέχασε ό,τι ξέρεις...
+                            <button v-on:click="resetState" type="button" class="btn btn-lg btn-info mb-2">Ξέχασε ό,τι ξέρεις...
                             </button>
                         </div>
                     </div>
@@ -298,6 +298,7 @@
         img {
             width: 100%;
             max-height: 200px;
+            height: 200px;
             @include media-breakpoint-down(md) {
                 font-size: medium;
             }
@@ -322,7 +323,7 @@
         padding: 20px;
         border-radius: 10px;
         border: 3px solid #3F51B5;
-        height: 350px;
+        min-height: 350px;
         margin-bottom: 20px;
     }
 
