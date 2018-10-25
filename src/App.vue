@@ -1,5 +1,5 @@
 <template>
-    <div class="mt-5" id="main">
+    <div class="m-3" id="main">
         <div class="row">
             <div class="col-md-4">
                 <div class="selectionContainer box" v-if="element">
@@ -36,7 +36,7 @@
                         <div class="col-sm-3">
                             <img class="img-thumb" :src="item.img">
                         </div>
-                        <div class="col-sm-9">
+                        <div class="col-sm-9 description">
                             <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
                         </div>
                     </div>
@@ -215,10 +215,6 @@
     @import '~bootstrap/scss/bootstrap';
     @import '~bootstrap-vue/dist/bootstrap-vue.css';
 
-    #main {
-        margin: 0 5%;
-    }
-
     .speech-bubble {
         position: relative;
         background: #673AB7;
@@ -261,6 +257,10 @@
         height: 350px;
         overflow: hidden;
         overflow-y: scroll;
+
+        .description {
+            padding: 0;
+        }
     }
 
     .set-item {
@@ -274,7 +274,8 @@
             top: 50%;
             transform: translateY(-50%);
             line-height: 1.1em;
-            font-size: x-large;
+            font-size: 130%;
+            width: 100%;
             @include media-breakpoint-down(md) {
                 font-size: medium;
             }
@@ -296,9 +297,9 @@
 
     .robot {
         img {
-            width: 100%;
+            max-width: 100%;
             max-height: 200px;
-            height: 200px;
+            margin-top: 10px;
             @include media-breakpoint-down(md) {
                 font-size: medium;
             }
