@@ -13,7 +13,8 @@
 <script>
     export default {
         props: [
-            'saying'
+            'saying',
+            'testVariable'
         ],
         components: {
         },
