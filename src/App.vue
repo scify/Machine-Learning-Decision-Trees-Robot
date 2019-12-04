@@ -58,7 +58,58 @@
         </div>
         <div id="frame1" class="border border-dark" style="display: none; height: 675px; width: 1200px"
              :style="{ backgroundImage: `url(frame1/bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
-            <img src="frame1/robot-hi.png" class="robot-hi">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-3 h-100"></div>
+                    <div class="col-6 h-100">
+                        <div class="container h-100">
+                            <div class="row h-25 d-flex justify-content-center">
+                                <img src="frame1/bubble.png" class="bubble-frame1">
+                            </div>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100">
+                                        <div class="h-100 col-6">
+                                            <img src="frame1/robot-hi.png" class="robot-hi-frame1">
+                                        </div>
+                                        <div class="h-100 col-6 d-flex justify-content-center">
+                                            <div class="align-self-center">
+                                                <img src="frame1/button.png" class="button-frame1 img-fluid"  v-on:click="leaveFrame1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-3 h-100"></div>
+                </div>
+            </div>
+        </div>
+        <div id="frame2" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-6 h-100">
+                        <div class="container h-100">
+                            <div class="row h-25 d-flex justify-content-center">
+                                <img src="frame2/bubble.png" class="bubble-frame2">
+                            </div>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100">
+                                        <div class="h-100 col-6">
+                                            <img src="frame2/robot-hi.png" class="robot-hi-frame2">
+                                        </div>
+                                        <div class="h-100 col-6"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-6 h-100"></div>
+                </div>
+            </div>
         </div>
         <div class="m-3" style="display: none">
             <div class="row">
@@ -234,6 +285,10 @@
                 $("#intro").css("display", "none");
                 $("#frame1").css("display", "block");
             },
+            leaveFrame1() {
+                $("#frame1").css("display", "none");
+                $("#frame2").css("display", "block");
+            },
             classify() {
                 if (!this.decisionTree)
                     this.robotText = 'Δεν έχω αρκετά δεδομένα για να κάνω πρόβλεψη.';
@@ -296,16 +351,6 @@
         height: 100%;
         align-items: center;
         justify-content: center;
-    }
-
-    .robot-hi {
-        height: 100%;
-        position: relative;
-        -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 3s; /* Firefox < 16 */
-        -ms-animation: fadein 3s; /* Internet Explorer */
-        -o-animation: fadein 3s; /* Opera < 12.1 */
-        animation: fadein 3s;
     }
 
     .start-button-intro {
@@ -407,6 +452,58 @@
             font-size: 12px;
         }
     }
+
+
+    .bubble-frame1 {
+        opacity: 0;
+        padding-top: 10%;
+        height: auto;
+        width: 80%;
+        position: relative;
+        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+        -o-animation: fadein 2s; /* Opera < 12.1 */
+        animation: fadein 2s;
+        animation-fill-mode: forwards;
+        animation-delay: 1s;
+    }
+
+    .robot-hi-frame1 {
+        height: 100%;
+        width: auto;
+        position: relative;
+        -webkit-animation: fadein 3s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 3s; /* Firefox < 16 */
+        -ms-animation: fadein 3s; /* Internet Explorer */
+        -o-animation: fadein 3s; /* Opera < 12.1 */
+        animation: fadein 3s;
+    }
+
+    .button-frame1 {
+        opacity: 0;
+        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+        -moz-animation: fadein 2s; /* Firefox < 16 */
+        -ms-animation: fadein 2s; /* Internet Explorer */
+        -o-animation: fadein 2s; /* Opera < 12.1 */
+        animation: fadein 2s;
+        animation-fill-mode: forwards;
+        animation-delay: 1.5s;
+    }
+
+    .bubble-frame2 {
+        padding-top: 10%;
+        height: auto;
+        width: 80%;
+        position: relative;
+    }
+
+    .robot-hi-frame2 {
+        height: 100%;
+        width: auto;
+        position: relative;
+    }
+
 
     .btn-apple {
         color: #FFFFFF;
