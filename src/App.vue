@@ -64,7 +64,16 @@
                     <div class="col-6 h-100">
                         <div class="container h-100">
                             <div class="row h-25 d-flex justify-content-center">
-                                <img src="frame1/bubble.png" class="bubble-frame1">
+                                <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                     class="h-100 w-100 bubble-position">
+                                    <div class="text-box-frame1 d-flex justify-content-start align-content-center">
+                                        <div class="align-self-center">
+                                            <span class="yellowText">Γειά! Είμαι ο Θαλής!</span>
+                                            <br>
+                                            <span class="whiteText">Αυτή τη στιγμή δε γνωρίζω τίποτα,<br>αλλά έχω την ικανότητα να μαθαίνω!</span>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row h-75">
                                 <div class="container h-100">
@@ -74,7 +83,8 @@
                                         </div>
                                         <div class="h-100 col-6 d-flex justify-content-center">
                                             <div class="align-self-center">
-                                                <img src="frame1/button.png" class="button-frame1 img-fluid"  v-on:click="leaveFrame1">
+                                                <img src="frame1/buttonIcon.png" class="button-frame1 img-fluid"
+                                                     v-on:click="leaveFrame1">
                                             </div>
                                         </div>
                                     </div>
@@ -90,24 +100,132 @@
              :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
             <div class="container h-100 ">
                 <div class="row h-100">
-                    <div class="col-6 h-100">
-                        <div class="container h-100">
-                            <div class="row h-25 d-flex justify-content-center">
-                                <img src="frame2/bubble.png" class="bubble-frame2">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
+                                <div class="h-100 col-12 p-0">
+                                    <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                         class="h-100 w-100 bubble-position">
+                                        <div class="text-box d-flex justify-content-center align-content-center">
+                                            <div class="align-self-center">
+                                                <span class="yellowText">Γειά! Είμαι ο Θαλής!</span>
+                                                <br>
+                                                <span class="whiteText">Αυτή τη στιγμή δε γνωρίζω τίποτα,<br>αλλά έχω την ικανότητα να μαθαίνω!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="row h-75">
                                 <div class="container h-100">
-                                    <div class="row h-100">
-                                        <div class="h-100 col-6">
-                                            <img src="frame2/robot-hi.png" class="robot-hi-frame2">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(frame2/robot-hi.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         </div>
-                                        <div class="h-100 col-6"></div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-6 h-100"></div>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                             v-if="element">
+                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
+                                <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
+                            </div>
+                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
+                                <div class="element-info-container align-self-center">
+                                    <div class="element-info">
+                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
+                                        <br>
+                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
+                                        <br>
+                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-content-center" style="height: 10%">
+                            <div class="col-4 h-100 align-self-center pt-4">
+                                <button class="btn orangeBtn" v-on:click="leaveFrame2"><i>Θαλή; Τι είναι αυτό;</i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="frame3" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
+                                <div class="h-100 col-12 p-0">
+                                    <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                         class="h-100 w-100 bubble-position">
+                                        <div class="text-box d-flex justify-content-center align-content-center">
+                                            <div class="align-self-center">
+                                                <span class="whiteText">Πρώτη φορά βλέπω κάτι τέτοιο!</span>
+                                                <br>
+                                                <span class="yellowText">Βοήθησέ με να μάθω!</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(robotWithBoard.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                            <div class="board-div d-flex justify-content-center">
+                                                <div class="align-self-center board-text">?</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                             v-if="element">
+                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
+                                <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
+                            </div>
+                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
+                                <div class="element-info-container align-self-center">
+                                    <div class="element-info">
+                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
+                                        <br>
+                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
+                                        <br>
+                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="height: 5%"></div>
+                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                             v-if="element">
+                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
+                                <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
+                            </div>
+                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
+                                <div class="element-info-container align-self-center">
+                                    <div class="element-info">
+                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
+                                        <br>
+                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
+                                        <br>
+                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -288,6 +406,10 @@
             leaveFrame1() {
                 $("#frame1").css("display", "none");
                 $("#frame2").css("display", "block");
+            },
+            leaveFrame2() {
+                $("#frame2").css("display", "none");
+                $("#frame3").css("display", "block");
             },
             classify() {
                 if (!this.decisionTree)
@@ -481,6 +603,10 @@
     }
 
     .button-frame1 {
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        position: relative;
         opacity: 0;
         -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
         -moz-animation: fadein 2s; /* Firefox < 16 */
@@ -491,17 +617,85 @@
         animation-delay: 1.5s;
     }
 
-    .bubble-frame2 {
-        padding-top: 10%;
+    .yellowText {
+        font-family: "Roboto";
+        font-size: x-large;
+        color: #fddd02;
+    }
+
+    .whiteText {
+        font-family: "Roboto";
+        font-size: large;
+        color: #ffffff;
+    }
+
+    .orangeBtn {
+        font-family: "Roboto";
+        font-size: large;
+        background-color: #fd7202;
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        color: white;
+        width: 100%;
+        height: auto;
+    }
+
+    .bubble-position {
+        position: relative;
+        left: 10%;
+        top: 30%;
+    }
+
+    .bubble-frame-basic {
         height: auto;
         width: 80%;
         position: relative;
     }
 
-    .robot-hi-frame2 {
-        height: 100%;
-        width: auto;
+    .text-box-frame1 {
+        width: 80%;
+        height: 60%;
         position: relative;
+        top: 5%;
+        left: 5%;
+    }
+
+    .text-box {
+        width: 80%;
+        height: 60%;
+        position: relative;
+        top: 10%;
+        left: 5%;
+    }
+
+    .board-div {
+        position: relative;
+        top: 31%;
+        left: 14%;
+        width: 49%;
+        height: 27%;
+    }
+
+    .board-text {
+        font-family: "Roboto";
+        font-size: x-large;
+        color: #606060;
+    }
+
+    .box-grey {
+        height: 33%;
+        width: 90%;
+        border-style: dotted;
+        border-width: medium;
+        border-color: #949494;
+        background-color: #ebebeb;
+    }
+
+    .border-grey-box {
+        border-right-style: dotted;
+        border-right-width: medium;
+        border-right-color: #949494;
     }
 
 
