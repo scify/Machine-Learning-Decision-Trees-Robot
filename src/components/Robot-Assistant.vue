@@ -1,5 +1,5 @@
 <template>
-<div class="row">
+<!--<div class="row">
     <div class="col">
         <div class="robot">
             <img src="robot.png">
@@ -8,7 +8,8 @@
     <div class="col">
         <p class="robot-saying speech-bubble" v-html="saying"></p>
     </div>
-</div>
+</div>-->
+    <p v-html="saying"></p>
 </template>
 <script>
     export default {

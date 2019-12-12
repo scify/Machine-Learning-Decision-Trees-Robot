@@ -3,7 +3,7 @@
         <div id="intro" class="border border-dark" style="display: block; height: 675px; width: 1200px"
              :style="{ backgroundImage: `url(intro/bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
             <div class="start-button-intro">
-                <img src="intro/button-go.png" class="img-fluid" v-on:click="leaveIntro">
+                <img src="intro/button-go.png" class="img-fluid" v-on:click="goToFrame1">
             </div>
             <div class="container h-100 ">
                 <div class="col-12 h-50 d-flex justify-content-center">
@@ -84,7 +84,7 @@
                                         <div class="h-100 col-6 d-flex justify-content-center">
                                             <div class="align-self-center">
                                                 <img src="frame1/buttonIcon.png" class="button-frame1 img-fluid"
-                                                     v-on:click="leaveFrame1">
+                                                     v-on:click="goToFrame2">
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
                         </div>
                     </div>
                     <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
-                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-grey"
                              v-if="element">
                             <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
                                 <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
@@ -147,7 +147,7 @@
                         </div>
                         <div class="row d-flex justify-content-center align-content-center" style="height: 10%">
                             <div class="col-4 h-100 align-self-center pt-4">
-                                <button class="btn orangeBtn" v-on:click="leaveFrame2"><i>Θαλή; Τι είναι αυτό;</i>
+                                <button class="btn orange-btn" v-on:click="goToFrame3"><i>Θαλή; Τι είναι αυτό;</i>
                                 </button>
                             </div>
                         </div>
@@ -190,10 +190,14 @@
                         </div>
                     </div>
                     <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
-                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                        <div class="row d-flex justify-content-center align-content-center align-self-center"
+                             style="width: 100%; height: 10%">
+                        </div>
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-grey"
                              v-if="element">
                             <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
-                                <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
+                                <div class="pl-3 align-self-center col-11"><img :src="element.img" class="img-fluid">
+                                </div>
                             </div>
                             <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
                                 <div class="element-info-container align-self-center">
@@ -207,116 +211,354 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row" style="height: 5%"></div>
-                        <div class="row selectionContainer d-flex justify-content-center align-content-center align-self-center box-grey"
+                        <div class="row" style="height: 1%"></div>
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
                              v-if="element">
-                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
-                                <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
-                            </div>
-                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
-                                <div class="element-info-container align-self-center">
-                                    <div class="element-info">
-                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
-                                        <br>
-                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
-                                        <br>
-                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                            <div class="col-8 h-100 d-flex justify-content-start flex-column">
+                                <div class="row text-frame3-1 align-self-center"><b>Εκπαίδευσε το Θαλή!</b></div>
+                                <div class="row text-frame3-2 align-self-center"><b>Τι αφορά η παραπάνω εικόνα;</b>
+                                </div>
+                                <div class="row element-container">
+                                    <div class="row align-self-center col-12 no-gutters">
+                                        <div class="col-6" style="padding-left: 0; padding-right: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[0])" type="button"
+                                                    class="selectionBtn btn btn-apple mt-1 mb-1">{{ features[0] }}
+                                            </button>
+                                        </div>
+                                        <div class="col-6" style="padding-right: 0; padding-left: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[1])" type="button"
+                                                    class="selectionBtn btn btn-orange mt-1">{{ features[1] }}
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div class="row d-flex justify-content-end align-content-center"
+                             style="width: 100%; height: 10%">
+                            <div class="finish-btn align-self-center" v-on:click="finishButton">ΤΕΛΟΣ</div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="m-3" style="display: none">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="selectionContainer box" v-if="element">
-                        <div class="row element-container">
-                            <div class="img-container">
-                                <img :src="element.img">
+        <div id="frame4" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
+                                <div class="h-100 col-12 p-0">
+                                    <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                         class="h-100 w-100 bubble-position">
+                                        <div class="text-box d-flex justify-content-center align-content-center">
+                                            <div class="align-self-center" v-if="lastTrainingInput">
+                                                <span class="whiteText">Ώστε είναι ένα </span>
+                                                <span class="yellowText">{{ lastTrainingInput }} </span>
+                                                <span class="whiteText">!</span>
+                                            </div>
+                                            <div class="align-self-center" v-else>
+                                                <span class="whiteText">Νομίζω ότι ξέρω τι είναι!</span>
+                                                <br>
+                                                <span class="yellowText">Να σου πω;</span>
+                                                <span class="predict-btn" v-on:click="goToFrame5">ΝΑΙ</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="element-info-container">
-                                <div class="element-info">
-                                    <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
-                                    <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
-                                    <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(frame4/robot.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                            <div class="think" v-on:click="goToFrame6"><img src="think.png"
+                                                                                            class="img-fluid"></div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="robot-container box">
-                        <robot-assistant v-bind:saying="robotText"></robot-assistant>
-                        <div class="row mt-5">
-                            <div class="col-md-12 text-center">
-                                <button v-on:click="classify" type="button"
-                                        class="btn btn-lg btn-info robot-action">
-                                    Δοκίμασέ με!
-                                </button>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row d-flex justify-content-center align-content-center align-self-center"
+                             style="width: 100%; height: 10%">
+                            <div class="next-btn align-self-center" v-on:click="nextButton">Φέρε και άλλο φρούτο!
+                                >>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="training-set-container box" v-if="trainingSet.length">
-                        <h4>Τι έχω μάθει μέχρι τώρα:</h4>
-                        <div class="set-item row mt-3" v-for="item in trainingSet" :key="item.id">
-                            <div class="col-sm-3">
-                                <img class="img-thumb" :src="item.img">
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-grey"
+                             v-if="element">
+                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
+                                <div class="pl-3 align-self-center col-11"><img :src="element.img" class="img-fluid">
+                                </div>
                             </div>
-                            <div class="col-sm-9 description">
-                                <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
+                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
+                                <div class="element-info-container align-self-center">
+                                    <div class="element-info">
+                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
+                                        <br>
+                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
+                                        <br>
+                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                                    </div>
+                                </div>
                             </div>
+                        </div>
+                        <div class="row" style="height: 1%"></div>
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
+                             v-if="element">
+                            <div class="col-8 h-100 d-flex justify-content-start flex-column">
+                                <div class="row text-frame3-1 align-self-center"><b>Εκπαίδευσε το Θαλή!</b></div>
+                                <div class="row text-frame3-2 align-self-center"><b>Τι αφορά η παραπάνω εικόνα;</b>
+                                </div>
+                                <div class="row element-container">
+                                    <div class="row align-self-center col-12 no-gutters">
+                                        <div class="col-6" style="padding-left: 0; padding-right: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[0])" type="button"
+                                                    class="selectionBtn btn btn-apple mt-1 mb-1">{{ features[0] }}
+                                            </button>
+                                        </div>
+                                        <div class="col-6" style="padding-right: 0; padding-left: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[1])" type="button"
+                                                    class="selectionBtn btn btn-orange mt-1">{{ features[1] }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-end align-content-center"
+                             style="width: 100%; height: 10%">
+                            <div class="finish-btn align-self-center" v-on:click="finishButton">ΤΕΛΟΣ</div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="selectionContainer box " v-if="element">
-                        Εκπαίδευσε το Θαλή! Τι αφορά η παραπάνω εικόνα;
-                        <div class="row element-container">
-                            <div class="col-lg-6" style="padding-left: 0; padding-right: 4px">
-                                <button v-on:click="addElementToTrainingSet(features[0])" type="button"
-                                        class="selectionBtn btn btn-lg btn-apple mt-3 mb-2">{{ features[0] }}
-                                </button>
+        </div>
+        <div id="frame5" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
                             </div>
-                            <div class="col-lg-6" style="padding-right: 0; padding-left: 4px">
-                                <button v-on:click="addElementToTrainingSet(features[1])" type="button"
-                                        class="selectionBtn btn btn-lg btn-orange mt-3">{{ features[1] }}
-                                </button>
-                            </div>
-                            <div class="col-lg-12">
-                                <hr>
-                                <button v-on:click="fetchNextInstance" type="button"
-                                        class="btn btn-lg btn-success">Φέρε και άλλο φρούτο!
-                                </button>
-                                <br><br>
-                                <button v-on:click="resetState" type="button" class="btn btn-lg btn-info mb-2">
-                                    Ξέχασε
-                                    ό,τι ξέρεις...
-                                </button>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(robotWithBoard.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                            <div class="think" v-on:click="goToFrame6"><img src="think.png"
+                                                                                            class="img-fluid"></div>
+                                            <div class="board-div d-flex justify-content-center">
+                                                <div class="align-self-center board-text">
+                                                    <robot-assistant v-bind:saying="robotText"></robot-assistant>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-
+                    </div>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row d-flex justify-content-center align-content-center align-self-center"
+                             style="width: 100%; height: 10%">
+                            <div class="next-btn align-self-center" v-on:click="nextButton">Φέρε και άλλο φρούτο!
+                                >>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-grey"
+                             v-if="element">
+                            <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
+                                <div class="pl-3 align-self-center col-11"><img :src="element.img" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
+                                <div class="element-info-container align-self-center">
+                                    <div class="element-info">
+                                        <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
+                                        <br>
+                                        <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
+                                        <br>
+                                        <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row" style="height: 1%"></div>
+                        <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
+                             v-if="element">
+                            <div class="col-8 h-100 d-flex justify-content-start flex-column">
+                                <div class="row text-frame3-1 align-self-center"><b>Εκπαίδευσε το Θαλή!</b></div>
+                                <div class="row text-frame3-2 align-self-center"><b>Τι αφορά η παραπάνω εικόνα;</b>
+                                </div>
+                                <div class="row element-container">
+                                    <div class="row align-self-center col-12 no-gutters">
+                                        <div class="col-6" style="padding-left: 0; padding-right: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[0])" type="button"
+                                                    class="selectionBtn btn btn-apple mt-1 mb-1">{{ features[0] }}
+                                            </button>
+                                        </div>
+                                        <div class="col-6" style="padding-right: 0; padding-left: 4px">
+                                            <button v-on:click="addElementToTrainingSet(features[1])" type="button"
+                                                    class="selectionBtn btn btn-orange mt-1">{{ features[1] }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-end align-content-center"
+                             style="width: 100%; height: 10%">
+                            <div class="finish-btn align-self-center" v-on:click="finishButton">ΤΕΛΟΣ</div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="col-md-8" v-if="tree">
-                    <div class="text-center tree-container box">
-                        <div class="selectionContainer">
-                            <div class="col-md-12">
-                                <h2>Πώς σκέφτομαι:</h2>
+            </div>
+        </div>
+        <div id="frame6" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
+                            </div>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(robotWithBoard.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                            <div class="board-div d-flex justify-content-center">
+                                                <div class="align-self-center board-text">
+                                                    <div class="w-100 text-center">ΠΩΣ</div>
+                                                    <div class="w-100 text-center">ΣΚΕΦΤΟΜΑΙ</div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row d-flex justify-content-center align-content-center model-box">
+                            <div class="row col-12 h-25 justify-content-center p-3">
+                                <div class="col-12 h-75 container">
+                                    <div class="col-12 row h-100 justify-content-center align-content-center"
+                                         v-if="decisionTree">
+                                        <div class="col-4 h-100 d-flex justify-content-center align-content-center">
+                                            <img :src="element.img" style="height: 100%;width: auto">
+                                        </div>
+                                        <div class="col-6 h-100 d-flex justify-content-center align-content-center">
+                                            <div class="text-frame6 text-center align-self-center">
+                                                Αυτό είναι ένα: <b>
+                                                <robot-assistant v-bind:saying="robotText"></robot-assistant>
+                                            </b>
+                                            </div>
+                                        </div>
+                                        <div class="col-2"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row col-12 h-75 justify-content-center">
                                 <div class="tree mt-3" v-html="tree"></div>
                             </div>
                         </div>
+                        <div class="row d-flex justify-content-between align-content-center"
+                             style="width: 100%; height: 10%">
+                            <div class="back-btn align-self-center" v-on:click="backButton">ΕΠΙΣΤΡΟΦΗ</div>
+                            <div class="forget-btn align-self-center" v-on:click="resetState">ΞΕΧΑΣΕ</div>
+                            <div class="finish-btn align-self-center" v-on:click="finishButton">ΤΕΛΟΣ</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div id="outro" class="border border-dark" style="display: none; height: 675px; width: 1200px"
+             :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+            <div class="container h-100 ">
+                <div class="row h-100">
+                    <div class="col-5 h-100">
+                        <div class="container h-100 col-12 no-gutters p-0">
+                            <div class="row h-25 p-0 col-12  no-gutters p-0">
+                            </div>
+                            <div class="row h-75">
+                                <div class="container h-100">
+                                    <div class="row h-100 d-flex justify-content-center">
+                                        <div class="h-100 col-11"
+                                             :style="{backgroundImage: `url(outro/robot.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                        <div class="row d-flex justify-content-center align-content-center model-box">
+                            <div class="row col-12 h-25 justify-content-center p-3">
+                                <div class="outro-text-1 col-10 align-self-center h-100 d-flex justify-content-center align-content-center">
+                                    <div class="align-self-center"><b>Τί να θυμάστε από αυτή την άσκηση</b></div>
+                                </div>
+                            </div>
+                            <div class="row col-12 h-75 justify-content-center">
+                                <div class="col-12 h-75 d-flex justify-content-center align-content-center">
+                                    <div class="align-self-center col-12 outro-text-2">
+                                        <ol type="1">
+                                            <li>Just</li>
+                                            <li>Play</li>
+                                            <li>Games!!!</li>
+                                        </ol>
+                                    </div>
+                                </div>
+                                <div class="col-12 h-25 d-flex justify-content-center">
+                                    <div class="container h100">
+                                        <div class="row h-100">
+                                            <div class="col-2 h-100"></div>
+                                            <div class="col-8 h-100 d-flex justify-content-center">
+                                                <div class="col-1"></div>
+                                                <div class="col-4 d-flex h100">
+                                                    <div class="align-self-center h-75">
+                                                        <img src="intro/demokritos.jpg"
+                                                             style="height: 100%; max-width: 100%">
+                                                    </div>
+                                                </div>
+                                                <div class="col-2"></div>
+                                                <div class="col-4  d-flex h-100">
+                                                    <div class="align-self-center h-75">
+                                                        <img src="intro/SciFY.png"
+                                                             style="height: 100%; max-width: 100%">
+                                                    </div>
+                                                </div>
+                                                <div class="col-1"></div>
+
+                                            </div>
+                                            <div class="col-2 h-100"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-content-center"
+                             style="width: 100%; height: 10%">
+                            <div class="forget-btn align-self-center" v-on:click="resetState">ΞΕΚΙΝΑ ΞΑΝΑ</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--<h4>Τι έχω μάθει μέχρι τώρα:</h4>
+        <div class="set-item row mt-3" v-for="item in trainingSet" :key="item.id">
+            <div class="col-sm-3">
+                <img class="img-thumb" :src="item.img">
+            </div>
+            <div class="col-sm-9 description">
+                <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
+            </div>
+        </div>-->
     </div>
 </template>
 
@@ -336,7 +578,9 @@
                 features: [],
                 robotText: null,
                 tree: null,
-                decisionTree: null
+                decisionTree: null,
+                currentFrame: 0,
+                lastTrainingInput: null
             }
         },
         computed: {},
@@ -345,11 +589,15 @@
                 this.trainingSet = [];
                 this.decisionTree = null;
                 this.element = null;
+                this.lastTrainingInput = null;
                 let instance = this;
                 $.getJSON("set.json", function (object) {
                     instance.allData = object.data;
                     instance.features = object.features;
                     instance.fetchNextInstance();
+                    if (instance.currentFrame == 10) {
+                        instance.goToFrame3();
+                    }
                 });
             },
             fetchNextInstance() {
@@ -366,27 +614,44 @@
                     }
                     this.element = this.allData[newElementIndex];
                 }
-                if (this.trainingSet.length > 0)
-                    this.robotText = "Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"
+                /*if (this.trainingSet.length > 0)
+                    this.robotText = "Ωχ...Ένα φρούτο! Νομίζω ξέρω τί ειναι!"*/
 
             },
+            nextButton() {
+                this.lastTrainingInput = null;
+                this.fetchNextInstance();
+                this.goToFrame4();
+            },
             addElementToTrainingSet(label) {
-                this.trainingSet.unshift({
-                    ...this.element,
-                    label: label
-                });
+                let found = false;
+                let ts = this.trainingSet;
+                for (let i = 0; i < ts.length; i++) {
+                    if (this.element.id === ts[i].id) {
+                        found = true;
+                        ts[i].label = label;
+                    }
+                }
+                if (!found) {
+                    this.trainingSet.unshift({
+                        ...this.element,
+                        label: label
+                    });
+                }
+                this.lastTrainingInput = label;
                 this.train();
+                this.goToFrame4();
             },
             resetState() {
-                this.reload();
+                //this.robotText = 'Γεία! Είμαι ο Θαλής! Εκπαίδευσέ με για να γίνω σοφότερος!';
                 this.prediction = null;
-                this.robotText = 'Γεία! Είμαι ο Θαλής! Εκπαίδευσέ με για να γίνω σοφότερος!';
+                this.robotText = null;
                 this.tree = null;
+                this.reload();
             },
             train() {
                 if (!this.trainingSet.length)
-                    this.robotText = 'Δεν έχω αρκετά δεδομένα για να μάθω...';
-
+                    this.robotText = null;//this.robotText = 'Δεν έχω αρκετά δεδομένα για να μάθω...';
                 else {
                     let config = {
                         trainingSet: this.trainingSet,
@@ -396,28 +661,68 @@
                     // Building Decision Tree
                     this.decisionTree = new dt.DecisionTree(config);
                     this.tree = this.treeToHtml(this.decisionTree.root);
-                    this.robotText = 'Γιαμ γιαμ! Νόστιμα τα δεδομένα!'
+                    //this.robotText = 'Γιαμ γιαμ! Νόστιμα τα δεδομένα!'
                 }
             },
-            leaveIntro() {
+            leaveAllFrames() {
                 $("#intro").css("display", "none");
+                $("#frame1").css("display", "none");
+                $("#frame2").css("display", "none");
+                $("#frame3").css("display", "none");
+                $("#frame4").css("display", "none");
+                $("#frame5").css("display", "none");
+                $("#frame6").css("display", "none");
+                $("#outro").css("display", "none");
+            }, goToFrame1() {
+                this.leaveAllFrames();
+                this.currentFrame = 1;
                 $("#frame1").css("display", "block");
             },
-            leaveFrame1() {
-                $("#frame1").css("display", "none");
+            goToFrame2() {
+                this.leaveAllFrames();
+                this.currentFrame = 2;
                 $("#frame2").css("display", "block");
             },
-            leaveFrame2() {
-                $("#frame2").css("display", "none");
+            goToFrame3() {
+                this.leaveAllFrames();
+                this.currentFrame = 3;
                 $("#frame3").css("display", "block");
+            },
+            goToFrame4() {
+                this.leaveAllFrames();
+                this.currentFrame = 4;
+                $("#frame4").css("display", "block");
+            },
+            goToFrame5() {
+                this.classify();
+                this.leaveAllFrames();
+                this.currentFrame = 5;
+                $("#frame5").css("display", "block");
+            },
+            goToFrame6() {
+                this.classify();
+                this.leaveAllFrames();
+                this.currentFrame = 6;
+                $("#frame6").css("display", "block");
+            },
+            backButton() {
+                if (this.decisionTree)
+                    this.goToFrame4();
+                else
+                    this.goToFrame3();
+            },
+            finishButton() {
+                this.leaveAllFrames();
+                this.currentFrame = 10;
+                $("#outro").css("display", "block");
             },
             classify() {
                 if (!this.decisionTree)
-                    this.robotText = 'Δεν έχω αρκετά δεδομένα για να κάνω πρόβλεψη.';
+                    this.robotText = null;//this.robotText = 'Δεν έχω αρκετά δεδομένα για να κάνω πρόβλεψη.';
                 else {
                     this.prediction = this.decisionTree.predict(this.element);
-
-                    this.robotText = this.prediction ? 'Χμ... μήπως είναι ένα <b>' + this.prediction + '</b>?' : 'Πραγματικά δεν ξέρω τι είναι αυτό...'
+                    //this.robotText = this.prediction ? 'Χμ... μήπως είναι ένα <b>' + this.prediction + '</b>?' : 'Πραγματικά δεν ξέρω τι είναι αυτό...'
+                    this.robotText = this.prediction + " !";
                 }
             },
             treeToHtml(tree) {
@@ -465,6 +770,39 @@
     body {
         height: 100%;
         margin: 0;
+    }
+
+    .think {
+        position: absolute;
+        width: 5em;
+        height: 5em;
+        left: 10%;
+        -webkit-animation: fadeinout 3s infinite;
+        animation: fadeinout 3s infinite;
+    }
+
+    @-webkit-keyframes fadeinout {
+        0% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.3;
+        }
+    }
+
+    @keyframes fadeinout {
+        0% {
+            opacity: 0.3;
+        }
+        50% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.3;
+        }
     }
 
     .big-box {
@@ -617,6 +955,42 @@
         animation-delay: 1.5s;
     }
 
+    .text-frame3-1 {
+        font-size: 2.4em;
+        font-family: "Roboto";
+        color: #606060;
+    }
+
+    .text-frame3-2 {
+        font-family: "Roboto";
+        font-size: 1.7em;
+        color: #606060;
+    }
+
+    .text-frame6 {
+        font-family: "Roboto";
+        font-size: x-large;
+        color: black;
+    }
+
+    .outro-text-1 {
+        font-family: "Roboto";
+        font-size: x-large;
+        color: #606060;
+        border-style: dashed;
+        border-width: medium;
+        border-color: #606060;
+        background-color: #ebebeb;
+        text-align: center;
+    }
+
+    .outro-text-2 {
+        font-family: "Roboto";
+        font-size: xx-large;
+        color: #606060;
+        text-align: left;
+    }
+
     .yellowText {
         font-family: "Roboto";
         font-size: x-large;
@@ -629,7 +1003,7 @@
         color: #ffffff;
     }
 
-    .orangeBtn {
+    .orange-btn {
         font-family: "Roboto";
         font-size: large;
         background-color: #fd7202;
@@ -681,6 +1055,91 @@
         font-family: "Roboto";
         font-size: x-large;
         color: #606060;
+    }
+
+    .predict-btn {
+        font-family: "Roboto";
+        color: white;
+        border-style: dashed;
+        border-color: white;
+        background-color: #52a948;
+        font-size: x-large;
+        text-align: center;
+        width: 30%;
+        border-width: thin;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+        margin-left: 1em;
+    }
+
+    .next-btn {
+        font-family: "Roboto";
+        font-size: x-large;
+        background-color: #52a948;
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        color: white;
+        width: 80%;
+        height: auto;
+        text-align: center;
+    }
+
+    .back-btn {
+        font-family: "Roboto";
+        font-size: medium;
+        background-color: #52a948;
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        color: white;
+        width: 25%;
+        height: auto;
+        text-align: center;
+    }
+
+    .forget-btn {
+        font-family: "Roboto";
+        font-size: medium;
+        background-color: #0c5460;
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        color: white;
+        width: 25%;
+        height: auto;
+        text-align: center;
+    }
+
+    .finish-btn {
+        font-family: "Roboto";
+        font-size: medium;
+        background-color: #cc4549;
+        border-style: solid;
+        border-width: thin;
+        border-color: #464d5f;
+        color: white;
+        width: 25%;
+        height: auto;
+        text-align: center;
+    }
+
+    .box-bottom {
+        height: 30%;
+        width: 100%;
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+        border-color: #949494;
+        background-color: transparent;
+    }
+
+    .model-box {
+        height: 90%;
+        width: 100%;
+        border-bottom-style: solid;
+        border-bottom-width: thin;
+        border-color: #949494;
+        background-color: transparent;
     }
 
     .box-grey {
@@ -779,9 +1238,7 @@
     }
 
     .selectionBtn {
-        max-width: 180px;
         width: 100%;
-        height: 100px;
         font-size: 25px;
 
     }
