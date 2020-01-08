@@ -50,9 +50,9 @@
                     </div>
                     <div class="row d-flex justify-content-between align-content-center"
                          style="width: 100%; height: 10%">
-                        <div class="back-btn align-self-center" v-on:click="$emit('back')">ΕΠΙΣΤΡΟΦΗ</div>
-                        <div class="forget-btn align-self-center" v-on:click="$emit('reset')">ΞΕΧΑΣΕ</div>
-                        <div class="finish-btn align-self-center" v-on:click="$emit('finish')">ΤΕΛΟΣ</div>
+                        <div class="back-btn align-self-center cursor-pointer" v-on:click="$emit('back')">ΕΠΙΣΤΡΟΦΗ</div>
+                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reset')">ΞΕΧΑΣΕ</div>
+                        <div class="finish-btn align-self-center cursor-pointer" v-on:click="$emit('finish')">ΤΕΛΟΣ</div>
                     </div>
                 </div>
             </div>
