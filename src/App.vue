@@ -51,13 +51,14 @@
 
 <script>
     import dt from './lib/decision-tree';
-    import $ from 'jquery';
     import _ from 'lodash';
+    import jsonData from '../public/set.json'
 
     export default {
         components: {},
         data() {
             return {
+                jsonData: jsonData,
                 allData: [],
                 trainingSet: [],
                 element: null,
@@ -76,15 +77,12 @@
                 this.decisionTree = null;
                 this.element = null;
                 this.lastTrainingInput = null;
-                let instance = this;
-                $.getJSON("set.json", function (object) {
-                    instance.allData = object.data;
-                    instance.features = object.features;
-                    instance.fetchNextInstance();
-                    if (instance.currentFrame == 10) {
-                        instance.currentFrame = 3;
-                    }
-                });
+                this.allData = this.jsonData.data;
+                this.features = this.jsonData.features;
+                this.fetchNextInstance();
+                if (this.currentFrame == 10) {
+                    this.currentFrame = 3;
+                }
             },
             fetchNextInstance() {
 
