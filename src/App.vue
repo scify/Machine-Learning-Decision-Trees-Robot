@@ -2,18 +2,15 @@
     <div id="allPages" class="big-box">
         <div class="border border-dark" style="height: 675px; width: 1200px">
             <transition name="fade" mode="out-in">
-                <intro v-if="this.currentFrame == 0" v-on:complete="currentFrame = 1">
-                </intro>
-                <try-me v-if="this.currentFrame == 1" v-on:complete="currentFrame = 2">
-                </try-me>
+                <intro v-if="this.currentFrame == 0" v-on:complete="currentFrame = 1"/>
+                <try-me v-if="this.currentFrame == 1" v-on:complete="currentFrame = 2"/>
                 <what-is-this v-bind:element="this.element" v-if="this.currentFrame == 2"
-                              v-on:complete="currentFrame = 3">
-                </what-is-this>
+                              v-on:complete="currentFrame = 3"/>
                 <restart-frame v-bind:element="this.element" v-bind:features="this.features"
                                v-bind:add-element-to-training-set="this.addElementToTrainingSet"
                                v-if="this.currentFrame == 3"
-                               v-on:finish="currentFrame = 10">
-                </restart-frame>
+                               v-on:finish="currentFrame = 10"/>
+
                 <basic-frame v-bind:last-training-input="this.lastTrainingInput" v-bind:element="this.element"
                              v-bind:features="this.features"
                              v-bind:add-element-to-training-set="this.addElementToTrainingSet"
@@ -22,18 +19,15 @@
                              v-bind:classify="this.classify"
                              v-if="this.currentFrame == 4"
                              v-on:finish="currentFrame = 10"
-                             v-on:how-it-works="goToModelFrame">
-                </basic-frame>
+                             v-on:how-it-works="goToModelFrame"/>
                 <model-frame v-bind:element="this.element"
                              v-bind:robot-text="this.robotText"
                              v-bind:decision-tree="this.decisionTree"
                              v-if="this.currentFrame == 5"
                              v-on:finish="currentFrame = 10"
                              v-on:reset="resetState"
-                             v-on:back="backButton">
-                </model-frame>
-                <outro v-if="this.currentFrame == 10" v-on:reload="reload">
-                </outro>
+                             v-on:back="backButton"/>
+                <outro v-if="this.currentFrame == 10" v-on:reload="reload"/>
             </transition>
         </div>
         <!--
@@ -53,9 +47,19 @@
     import dt from './lib/decision-tree';
     import _ from 'lodash';
     import jsonData from '../public/set.json'
+    import ElementPresentation from "./components/ElementPresentation";
+    import RobotHi from "./components/Robot-Hi";
+    import Annotator from "./components/Annotator";
 
     export default {
-        components: {},
+        components: {
+            Intro: () => import(/* webpackPrefetch: true */ './components/Intro.vue'),
+            TryMe: () => import(/* webpackPrefetch: true */ './components/TryMe.vue'),
+            WhatIsThis: () => import(/* webpackPrefetch: true */ './components/WhatIsThis.vue'),
+            ElementPresentation: () => import(/* webpackPrefetch: true */ './components/ElementPresentation.vue'),
+            RobotHi: () => import(/* webpackPrefetch: true */ './components/Robot-Hi.vue'),
+            Annotator: () => import(/* webpackPrefetch: true */ './components/Annotator.vue'),
+        },
         data() {
             return {
                 jsonData: jsonData,
@@ -130,8 +134,8 @@
                 this.reload();
             },
             goToModelFrame() {
-              this.classify();
-              this.currentFrame = 5;
+                this.classify();
+                this.currentFrame = 5;
             },
             backButton() {
                 if (this.decisionTree)
@@ -182,6 +186,7 @@
         align-items: center;
         justify-content: center;
     }
+
     .board-div {
         position: relative;
         top: 31%;
