@@ -12,14 +12,9 @@
                             v-bind:images="this.images"
                             v-bind:element="this.element"
                             v-on:complete="currentFrame = 3"/>
-                <HelpMeLearn v-if="this.currentFrame == 3"
-                             v-bind:images="this.images"
-                             v-bind:element="this.element"
-                             v-bind:features="this.features"
-                             v-bind:add-element-to-training-set="this.addElementToTrainingSet"
-                             v-on:finish="currentFrame = 10"/>
-                <BasicFrame v-if="this.currentFrame == 4"
+                <BasicFrame v-if="this.currentFrame == 3"
                             v-bind:images="this.images"
+                            v-bind:decisionTree="this.decisionTree"
                             v-bind:last-training-input="this.lastTrainingInput"
                             v-bind:element="this.element"
                             v-bind:features="this.features"
@@ -29,7 +24,7 @@
                             v-bind:classify="this.classify"
                             v-on:finish="currentFrame = 10"
                             v-on:how-it-works="goToModel"/>
-                <Model v-if="this.currentFrame == 5"
+                <Model v-if="this.currentFrame == 4"
                        v-bind:images="this.images"
                        v-bind:element="this.element"
                        v-bind:robot-text="this.robotText"
@@ -65,7 +60,6 @@
             Intro: () => import('./components/Intro'),
             TryMe: () => import('./components/TryMe'),
             WhatIsThis: () => import('./components/WhatIsThis'),
-            HelpMeLearn: () => import('./components/HelpMeLearn'),
             BasicFrame: () => import('./components/BasicFrame'),
             Model: () => import('./components/Model'),
             Outro: () => import('./components/Outro')
@@ -153,7 +147,7 @@
                 this.robotText = null;
                 this.lastTrainingInput = null;
                 this.fetchNextInstance();
-                this.currentFrame = 4;
+                this.currentFrame = 3;
             },
             addElementToTrainingSet(label) {
                 let found = false;
@@ -172,7 +166,7 @@
                 }
                 this.lastTrainingInput = label;
                 this.train();
-                this.currentFrame = 4;
+                this.currentFrame = 3;
             },
             resetState() {
                 this.prediction = null;
@@ -181,13 +175,10 @@
             },
             goToModel() {
                 this.classify();
-                this.currentFrame = 5;
+                this.currentFrame = 4;
             },
             backButton() {
-                if (this.decisionTree)
-                    this.currentFrame = 4;
-                else
-                    this.currentFrame = 3;
+                this.currentFrame = 3;
             },
             train() {
                 let config = {

@@ -6,7 +6,7 @@
                 <div class="col-5 h-100">
                     <div class="container h-100 col-12 no-gutters p-0">
                         <div class="row h-25 p-0 col-12  no-gutters p-0">
-                            <div class="h-100 col-12 p-0">
+                            <div class="h-100 col-12 p-0" v-if="decisionTree">
                                 <div :style="{backgroundImage: `url('${ textBubbleImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
                                      class="h-100 w-100 bubble-position" v-if="robotText === null">
                                     <div class="text-box d-flex justify-content-center align-content-center">
@@ -24,10 +24,22 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="h-100 col-12 p-0" v-else>
+                                <div :style="{backgroundImage: `url('${ textBubbleImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                     class="h-100 w-100 bubble-position">
+                                    <div class="text-box d-flex justify-content-center align-content-center">
+                                        <div class="align-self-center">
+                                            <span class="whiteText">Πρώτη φορά βλέπω κάτι τέτοιο!</span>
+                                            <br>
+                                            <span class="yellowText">Βοήθησέ με να μάθω!</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="row h-75">
                             <div class="container h-100">
-                                <div class="row h-100 d-flex justify-content-center">
+                                <div class="row h-100 d-flex justify-content-center" v-if="decisionTree">
                                     <div v-if="robotText === null" class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
@@ -46,6 +58,14 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row h-100 d-flex justify-content-center" v-else>
+                                    <div class="h-100 col-11"
+                                         :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                        <div class="board-div d-flex justify-content-center">
+                                            <div class="align-self-center board-text">?</div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -57,11 +77,12 @@
                             >>
                         </div>
                     </div>
-                    <ElementPresentation v-bind:element="this.element"></ElementPresentation>
+                    <ElementPresentation v-bind:element="this.element"/>
                     <div class="row" style="height: 1%"></div>
                     <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
                          v-if="element">
-                        <Annotator v-bind:features="this.features" v-bind:add-element-to-training-set="this.addElementToTrainingSet"/>
+                        <Annotator v-bind:features="this.features"
+                                   v-bind:add-element-to-training-set="this.addElementToTrainingSet"/>
                     </div>
                     <div class="row d-flex justify-content-end align-content-center"
                          style="width: 100%; height: 10%">
@@ -76,6 +97,7 @@
     export default {
         props: [
             'images',
+            'decisionTree',
             'lastTrainingInput',
             'element',
             'features',
@@ -120,6 +142,7 @@
         left: 10%;
         top: 30%;
     }
+
     .text-box {
         width: 80%;
         height: 60%;

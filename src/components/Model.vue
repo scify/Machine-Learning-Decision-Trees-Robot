@@ -24,23 +24,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
+                <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container no-gutters">
                     <div class="row d-flex justify-content-center align-content-center model-box">
                         <div class="row col-12 h-25 justify-content-center p-3">
-                            <div class="col-12 h-75 container">
-                                <div class="col-12 row h-100 justify-content-center align-content-center"
-                                     v-if="decisionTree">
-                                    <div class="col-4 h-100 d-flex justify-content-center align-content-center">
-                                        <img :src="element.img" style="height: 100%;width: auto">
+                            <div class="w-100 h-100 d-flex flex-row" v-if="decisionTree">
+                                <div class="h-100 w-75">
+                                    <ElementPresentation v-bind:element="this.element" v-bind:modelMode="true"/>
+                                </div>
+                                <div class="h-100 w-25 d-flex justify-content-start">
+                                    <div class="text-frame text-left align-self-center mr-3">
+                                        Πιστεύω <br> είναι ένα <b>{{ robotText }}</b>
                                     </div>
-                                    <div class="col-6 h-100 d-flex justify-content-center align-content-center">
-                                        <div class="text-frame text-center align-self-center">
-                                            Αυτό είναι ένα: <b>
-                                            <p>{{ robotText }}</p>
-                                        </b>
-                                        </div>
-                                    </div>
-                                    <div class="col-2"></div>
                                 </div>
                             </div>
                         </div>
@@ -50,9 +44,12 @@
                     </div>
                     <div class="row d-flex justify-content-between align-content-center"
                          style="width: 100%; height: 10%">
-                        <div class="back-btn align-self-center cursor-pointer" v-on:click="$emit('back')">ΕΠΙΣΤΡΟΦΗ</div>
-                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reset')">ΞΕΧΑΣΕ</div>
-                        <div class="finish-btn align-self-center cursor-pointer" v-on:click="$emit('finish')">ΤΕΛΟΣ</div>
+                        <div class="back-btn align-self-center cursor-pointer" v-on:click="$emit('back')">ΕΠΙΣΤΡΟΦΗ
+                        </div>
+                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reset')">ΞΕΧΑΣΕ
+                        </div>
+                        <div class="finish-btn align-self-center cursor-pointer" v-on:click="$emit('finish')">ΤΕΛΟΣ
+                        </div>
                     </div>
                 </div>
             </div>
@@ -71,6 +68,7 @@
             'decisionTree'
         ],
         components: {
+            ElementPresentation: () => import('./ElementPresentation'),
             DecisionTree: () => import('./DecisionTree')
         },
         data() {
@@ -84,8 +82,7 @@
                 return this.images["robotWithBoard"];
             }
         },
-        methods: {
-        },
+        methods: {},
         mounted() {
         }
     }
