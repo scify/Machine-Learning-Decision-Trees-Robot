@@ -1,6 +1,6 @@
 <template>
     <div class="h-100 w-100"
-         :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
+         :style="{ backgroundImage: `url('${ bgImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
         <div class="container h-100 ">
             <div class="row h-100">
                 <div class="col-5 h-100">
@@ -11,7 +11,7 @@
                             <div class="container h-100">
                                 <div class="row h-100 d-flex justify-content-center">
                                     <div class="h-100 col-11"
-                                         :style="{backgroundImage: `url(outroFrame/robot.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                         :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                     </div>
                                 </div>
                             </div>
@@ -44,14 +44,14 @@
                                             <div class="col-1"></div>
                                             <div class="col-4 d-flex h100">
                                                 <div class="align-self-center h-75">
-                                                    <img src="demokritos.jpg"
+                                                    <img v-bind:src="demokritosImage"
                                                          style="height: 100%; max-width: 100%">
                                                 </div>
                                             </div>
                                             <div class="col-2"></div>
                                             <div class="col-4  d-flex h-100">
                                                 <div class="align-self-center h-75">
-                                                    <img src="SciFY.png"
+                                                    <img v-bind:src="scifyImage"
                                                          style="height: 100%; max-width: 100%">
                                                 </div>
                                             </div>
@@ -76,12 +76,25 @@
 
 <script>
     export default {
-        props: [],
+        props: ["images"],
         components: {},
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+            bgImage() {
+                return this.images["defaultBackground"];
+            },
+            robotImage() {
+                return this.images["outroRobot"];
+            },
+            demokritosImage() {
+                return this.images["demokritos"];
+            },
+            scifyImage() {
+                return this.images["scify"];
+            }
+        },
         methods: {},
         mounted() {
         }

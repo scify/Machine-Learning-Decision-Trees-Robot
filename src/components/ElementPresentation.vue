@@ -4,16 +4,10 @@
         <div class="h-100 col-6 no-gutters pl-0 border-grey-box d-flex justify-content-center">
             <div class="pl-3 align-self-center"><img :src="element.img" class="img-fluid"></div>
         </div>
-        <div class="h-100 col-6 no-gutters pl-0 d-flex justify-content-center align-content-center">
-            <div class="element-info-container align-self-center">
-                <div class="element-info">
-                    <p>Χρώμα: <b>{{ element.χρώμα }}</b></p>
-                    <br>
-                    <p>Βάρος: <b>{{ element.βάρος }} γρ.</b></p>
-                    <br>
-                    <p>Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></p>
-                </div>
-            </div>
+        <div class="h-100 col-6 no-gutters pl-0 d-flex flex-column justify-content-center align-content-center">
+            <div class="element-text p-2 ml-3">Χρώμα: <b>{{ element.χρώμα }}</b></div>
+            <div class="element-text p-2 ml-3">Βάρος: <b>{{ element.βάρος }} γρ.</b></div>
+            <div class="element-text p-2 ml-3">Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></div>
         </div>
     </div>
 </template>
@@ -22,19 +16,25 @@
         props: [
             'element'
         ],
-        components: {
-        },
+        components: {},
         data() {
             return {}
         },
         computed: {},
         methods: {},
         mounted() {
+
         }
     }
 </script>
 
 <style scoped lang="scss">
+
+    .element-text {
+        font-family: "Roboto";
+        font-size: xx-large;
+    }
+
     .box-grey {
         height: 33%;
         width: 90%;

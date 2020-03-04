@@ -1,6 +1,6 @@
 <template>
     <div class="h-100 w-100"
-         :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
+         :style="{ backgroundImage: `url('${ bgImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
         <div class="container h-100 ">
             <div class="row h-100">
                 <div class="col-5 h-100">
@@ -11,7 +11,7 @@
                             <div class="container h-100">
                                 <div class="row h-100 d-flex justify-content-center">
                                     <div class="h-100 col-11"
-                                         :style="{backgroundImage: `url(robotWithBoard.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                         :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="board-div d-flex justify-content-center">
                                             <div class="align-self-center board-text">
                                                 <div class="w-100 text-center">ΠΩΣ</div>
@@ -45,7 +45,7 @@
                             </div>
                         </div>
                         <div class="row col-12 h-75 justify-content-center">
-                            <decision-tree v-bind:decision-tree="this.decisionTree"></decision-tree>
+                            <decision-tree v-bind:decision-tree="this.decisionTree"/>
                         </div>
                     </div>
                     <div class="row d-flex justify-content-between align-content-center"
@@ -65,16 +65,25 @@
 
     export default {
         props: [
+            'images',
             'element',
             'robotText',
             'decisionTree'
         ],
         components: {
+            DecisionTree: () => import('./DecisionTree')
         },
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+            bgImage() {
+                return this.images["defaultBackground"];
+            },
+            robotWithBoardImage() {
+                return this.images["robotWithBoard"];
+            }
+        },
         methods: {
         },
         mounted() {

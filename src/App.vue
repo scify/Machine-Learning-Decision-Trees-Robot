@@ -2,32 +2,44 @@
     <div id="allPages" class="big-box">
         <div class="border border-dark" style="height: 675px; width: 1200px">
             <transition name="fade" mode="out-in">
-                <intro v-if="this.currentFrame == 0" v-on:complete="currentFrame = 1"/>
-                <try-me v-if="this.currentFrame == 1" v-on:complete="currentFrame = 2"/>
-                <what-is-this v-bind:element="this.element" v-if="this.currentFrame == 2"
-                              v-on:complete="currentFrame = 3"/>
-                <restart-frame v-bind:element="this.element" v-bind:features="this.features"
-                               v-bind:add-element-to-training-set="this.addElementToTrainingSet"
-                               v-if="this.currentFrame == 3"
-                               v-on:finish="currentFrame = 10"/>
-
-                <basic-frame v-bind:last-training-input="this.lastTrainingInput" v-bind:element="this.element"
+                <Intro v-if="this.currentFrame == 0"
+                       v-bind:images="this.images"
+                       v-on:complete="introExit"/>
+                <TryMe v-if="this.currentFrame == 1"
+                       v-bind:images="this.images"
+                       v-on:complete="tryMeExit"/>
+                <WhatIsThis v-if="this.currentFrame == 2"
+                            v-bind:images="this.images"
+                            v-bind:element="this.element"
+                            v-on:complete="currentFrame = 3"/>
+                <HelpMeLearn v-if="this.currentFrame == 3"
+                             v-bind:images="this.images"
+                             v-bind:element="this.element"
                              v-bind:features="this.features"
                              v-bind:add-element-to-training-set="this.addElementToTrainingSet"
-                             v-bind:next-button="this.nextButton"
-                             v-bind:robot-text="this.robotText"
-                             v-bind:classify="this.classify"
-                             v-if="this.currentFrame == 4"
-                             v-on:finish="currentFrame = 10"
-                             v-on:how-it-works="goToModelFrame"/>
-                <model-frame v-bind:element="this.element"
-                             v-bind:robot-text="this.robotText"
-                             v-bind:decision-tree="this.decisionTree"
-                             v-if="this.currentFrame == 5"
-                             v-on:finish="currentFrame = 10"
-                             v-on:reset="resetState"
-                             v-on:back="backButton"/>
-                <outro v-if="this.currentFrame == 10" v-on:reload="reload"/>
+                             v-on:finish="currentFrame = 10"/>
+                <BasicFrame v-if="this.currentFrame == 4"
+                            v-bind:images="this.images"
+                            v-bind:last-training-input="this.lastTrainingInput"
+                            v-bind:element="this.element"
+                            v-bind:features="this.features"
+                            v-bind:add-element-to-training-set="this.addElementToTrainingSet"
+                            v-bind:next-button="this.nextButton"
+                            v-bind:robot-text="this.robotText"
+                            v-bind:classify="this.classify"
+                            v-on:finish="currentFrame = 10"
+                            v-on:how-it-works="goToModel"/>
+                <Model v-if="this.currentFrame == 5"
+                       v-bind:images="this.images"
+                       v-bind:element="this.element"
+                       v-bind:robot-text="this.robotText"
+                       v-bind:decision-tree="this.decisionTree"
+                       v-on:finish="currentFrame = 10"
+                       v-on:reset="resetState"
+                       v-on:back="backButton"/>
+                <Outro v-if="this.currentFrame == 10"
+                       v-bind:images="this.images"
+                       v-on:reload="reload"/>
             </transition>
         </div>
         <!--
@@ -47,21 +59,20 @@
     import dt from './lib/decision-tree';
     import _ from 'lodash';
     import jsonData from '../public/set.json'
-    import ElementPresentation from "./components/ElementPresentation";
-    import RobotHi from "./components/Robot-Hi";
-    import Annotator from "./components/Annotator";
 
     export default {
         components: {
-            Intro: () => import(/* webpackPrefetch: true */ './components/Intro.vue'),
-            TryMe: () => import(/* webpackPrefetch: true */ './components/TryMe.vue'),
-            WhatIsThis: () => import(/* webpackPrefetch: true */ './components/WhatIsThis.vue'),
-            ElementPresentation: () => import(/* webpackPrefetch: true */ './components/ElementPresentation.vue'),
-            RobotHi: () => import(/* webpackPrefetch: true */ './components/Robot-Hi.vue'),
-            Annotator: () => import(/* webpackPrefetch: true */ './components/Annotator.vue'),
+            Intro: () => import('./components/Intro'),
+            TryMe: () => import('./components/TryMe'),
+            WhatIsThis: () => import('./components/WhatIsThis'),
+            HelpMeLearn: () => import('./components/HelpMeLearn'),
+            BasicFrame: () => import('./components/BasicFrame'),
+            Model: () => import('./components/Model'),
+            Outro: () => import('./components/Outro')
         },
         data() {
             return {
+                images: {},
                 jsonData: jsonData,
                 allData: [],
                 trainingSet: [],
@@ -76,6 +87,41 @@
         },
         computed: {},
         methods: {
+            preLoadImage(key, url) {
+                if (!(key in this.images)) {
+                    this.images[key] = url;
+                    let img = new Image();
+                    img.src = url;
+                    img.onload = () => {
+                        console.log("Image:" + url + " preloaded");
+                    };
+                }
+            },
+            loadInitialImages() {
+                this.preLoadImage("introBackground", "introFrame/bg.jpg");
+                this.preLoadImage("introButton", "introFrame/button-go.png");
+                this.preLoadImage("introRobot", "introFrame/robot.png");
+                this.preLoadImage("introText1", "introFrame/text1.png");
+                this.preLoadImage("introText2", "introFrame/text2.png");
+                this.preLoadImage("introText3", "introFrame/text3.png");
+                this.preLoadImage("demokritos", "demokritos.jpg");
+                this.preLoadImage("scify", "SciFY.png");
+                this.preLoadImage("tryMeBackground", "tryMeFrame/bg.jpg");
+                this.preLoadImage("tryMeButton", "tryMeFrame/buttonIcon.png");
+                this.preLoadImage("robot-hi", "robot-hi.png");
+                this.preLoadImage("text-bubble", "text-bubble.png");
+            },
+            introExit() {
+                this.currentFrame = 1;
+                this.preLoadImage("defaultBackground", "bg.jpg");
+            },
+            tryMeExit() {
+                this.currentFrame = 2;
+                this.preLoadImage("robotWithBoard", "robotWithBoard.png");
+                this.preLoadImage("basicFrameRobot", "basicFrame/robot.png");
+                this.preLoadImage("think", "think.png");
+                this.preLoadImage("outroRobot", "outroFrame/robot.png");
+            },
             reload() {
                 this.trainingSet = [];
                 this.decisionTree = null;
@@ -85,7 +131,7 @@
                 this.features = this.jsonData.features;
                 this.fetchNextInstance();
                 if (this.currentFrame == 10) {
-                    this.currentFrame = 3;
+                    this.currentFrame = 0;
                 }
             },
             fetchNextInstance() {
@@ -133,7 +179,7 @@
                 this.robotText = null;
                 this.reload();
             },
-            goToModelFrame() {
+            goToModel() {
                 this.classify();
                 this.currentFrame = 5;
             },
@@ -160,6 +206,7 @@
             }
         },
         mounted() {
+            this.loadInitialImages();
             this.resetState();
         }
     }
@@ -168,6 +215,7 @@
 <style lang="scss">
     @import '~bootstrap/scss/bootstrap';
     @import '~bootstrap-vue/dist/bootstrap-vue.css';
+    @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 
     html,
     body {

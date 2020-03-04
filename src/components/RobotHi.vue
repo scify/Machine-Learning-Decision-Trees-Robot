@@ -1,7 +1,7 @@
 <template>
     <div class="container h-100">
         <div class="row h-25 d-flex justify-content-center">
-            <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+            <div rel="prefetch" :style="{backgroundImage: `url('${ textBubbleImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
                  class="h-100 w-100 bubble-position">
                 <div class="text-box d-flex justify-content-start align-content-center">
                     <div class="align-self-center">
@@ -15,8 +15,8 @@
         <div class="row h-75">
             <div class="container h-100">
                 <div class="row h-100 d-flex justify-content-center">
-                    <div class="h-100 col-11"
-                         :style="{backgroundImage: `url(robot-hi.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                    <div rel="prefetch" class="h-100 col-11"
+                         :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                     </div>
                 </div>
             </div>
@@ -25,14 +25,20 @@
 </template>
 <script>
     export default {
-        props: [
-        ],
+        props: ['images'],
         components: {
         },
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+            robotImage() {
+                return this.images["robot-hi"];
+            },
+            textBubbleImage() {
+                return this.images["text-bubble"];
+            }
+        },
         methods: {},
         mounted() {
         }

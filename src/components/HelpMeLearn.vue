@@ -1,13 +1,13 @@
 <template>
     <div class="h-100 w-100"
-         :style="{ backgroundImage: `url(bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
+         :style="{ backgroundImage: `url('${ bgImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
         <div class="container h-100 ">
             <div class="row h-100">
                 <div class="col-5 h-100">
                     <div class="container h-100 col-12 no-gutters p-0">
                         <div class="row h-25 p-0 col-12  no-gutters p-0">
                             <div class="h-100 col-12 p-0">
-                                <div :style="{backgroundImage: `url(text-bubble.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
+                                <div :style="{backgroundImage: `url('${ textBubbleImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}"
                                      class="h-100 w-100 bubble-position">
                                     <div class="text-box d-flex justify-content-center align-content-center">
                                         <div class="align-self-center">
@@ -23,7 +23,7 @@
                             <div class="container h-100">
                                 <div class="row h-100 d-flex justify-content-center">
                                     <div class="h-100 col-11"
-                                         :style="{backgroundImage: `url(robotWithBoard.png)`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
+                                         :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="board-div d-flex justify-content-center">
                                             <div class="align-self-center board-text">?</div>
                                         </div>
@@ -37,11 +37,11 @@
                     <div class="row d-flex justify-content-center align-content-center align-self-center"
                          style="width: 100%; height: 10%">
                     </div>
-                    <element-presentation v-bind:element="this.element"></element-presentation>
+                    <ElementPresentation v-bind:element="this.element"></ElementPresentation>
                     <div class="row" style="height: 1%"></div>
                     <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
                          v-if="element">
-                        <annotator v-bind:features="this.features" v-bind:add-element-to-training-set="this.addElementToTrainingSet"></annotator>
+                        <Annotator v-bind:features="this.features" v-bind:add-element-to-training-set="this.addElementToTrainingSet"/>
                     </div>
                     <div class="row d-flex justify-content-end align-content-center"
                          style="width: 100%; height: 10%">
@@ -55,16 +55,29 @@
 <script>
     export default {
         props: [
+            'images',
             'element',
             'features',
             'addElementToTrainingSet'
         ],
         components: {
+            ElementPresentation: () => import('./ElementPresentation'),
+            Annotator: () => import('./Annotator'),
         },
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+            bgImage() {
+                return this.images["defaultBackground"];
+            },
+            textBubbleImage() {
+                return this.images["text-bubble"];
+            },
+            robotWithBoardImage() {
+                return this.images["robotWithBoard"];
+            }
+        },
         methods: {},
         mounted() {
         }

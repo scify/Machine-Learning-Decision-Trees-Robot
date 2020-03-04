@@ -1,30 +1,37 @@
 <template>
     <div class="h-100 w-100"
-         :style="{ backgroundImage: `url(tryMeFrame/bg.jpg)`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
+         :style="{ backgroundImage: `url('${ bgImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `cover`}">
         <div class="container h-100 ">
             <div class="row h-100">
                 <div class="col-3 h-100"></div>
                 <div class="col-6 h-100">
-                    <robot-hi></robot-hi>
+                    <robot-hi v-bind:images="this.images"/>
                 </div>
                 <div class="col-3 h-100">
 
                 </div>
-                <img src="tryMeFrame/buttonIcon.png" class="button cursor-pointer" v-on:click="$emit('complete')">
+                <img v-bind:src="buttonImage" class="button cursor-pointer" v-on:click="$emit('complete')">
             </div>
         </div>
     </div>
 </template>
 <script>
     export default {
-        props: [
-        ],
+        props: ['images'],
         components: {
+            RobotHi: () => import('./RobotHi.vue')
         },
         data() {
             return {}
         },
-        computed: {},
+        computed: {
+            bgImage() {
+                return this.images["tryMeBackground"];
+            },
+            buttonImage() {
+                return this.images["tryMeButton"];
+            }
+        },
         methods: {},
         mounted() {
         }
