@@ -71,21 +71,17 @@
                     </div>
                 </div>
                 <div class="col-7 h-100 container d-flex justify-content-center flex-column element-container">
-                    <div class="row d-flex justify-content-center align-content-center align-self-center"
-                         style="width: 100%; height: 10%">
-                        <div class="next-btn align-self-center" v-on:click="nextButton">Φέρε και άλλο φρούτο!
-                            >>
-                        </div>
-                    </div>
+                    <div class="row w-100" style="height: 10%"></div>
                     <ElementPresentation v-bind:element="this.element"/>
-                    <div class="row" style="height: 1%"></div>
+                    <div class="row w-100" style="height: 5%"></div>
                     <div class="row d-flex justify-content-center align-content-center align-self-center box-bottom"
                          v-if="element">
                         <Annotator v-bind:features="this.features"
-                                   v-bind:add-element-to-training-set="this.addElementToTrainingSet"/>
+                                   v-bind:add-element-to-training-set="this.addElementToTrainingSet"
+                                   v-bind:lastTrainingInput="this.lastTrainingInput"
+                                   v-bind:nextButton="this.nextButton"/>
                     </div>
-                    <div class="row d-flex justify-content-end align-content-center"
-                         style="width: 100%; height: 10%">
+                    <div class="row d-flex justify-content-end align-content-center" style="width: 100%; height: 10%">
                         <div class="finish-btn align-self-center" v-on:click="$emit('finish')">ΤΕΛΟΣ</div>
                     </div>
                 </div>
@@ -209,19 +205,6 @@
         padding-left: 0.5em;
         padding-right: 0.5em;
         margin-left: 1em;
-    }
-
-    .next-btn {
-        font-family: "Roboto";
-        font-size: x-large;
-        background-color: #52a948;
-        border-style: solid;
-        border-width: thin;
-        border-color: #464d5f;
-        color: white;
-        width: 80%;
-        height: auto;
-        text-align: center;
     }
 
     .board-text {
