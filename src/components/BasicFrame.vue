@@ -43,13 +43,13 @@
                                     <div v-if="robotText === null" class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
-                                            <img v-bind:src="thinkImage" class="img-fluid">
+                                            <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                     </div>
                                     <div v-else class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
-                                            <img v-bind:src="thinkImage" class="img-fluid">
+                                            <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                         <div class="board-div d-flex justify-content-center">
                                             <div class="align-self-center board-text">
