@@ -38,7 +38,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row col-12 h-75 justify-content-center">
+                        <div class="row col-12 h-75 justify-content-center"  style="overflow-y: auto">
                             <decision-tree v-bind:decision-tree="this.decisionTree"/>
                         </div>
                     </div>
