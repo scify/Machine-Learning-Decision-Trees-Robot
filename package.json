@@ -15,7 +15,9 @@
     "bootstrap-vue": "^2.6.1",
     "jquery": "^3.4.1",
     "lodash": "^4.17.13",
-    "vue": "^2.6.11"
+    "vue": "^2.6.11",
+    "vue-cookies": "^1.7.0",
+    "vue-gtag": "^1.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.12.1",

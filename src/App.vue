@@ -47,6 +47,7 @@
                 <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
             </div>
         </div>-->
+        <cookies-consent></cookies-consent>
     </div>
 </template>
 
