@@ -43,12 +43,14 @@
                                     <div v-if="robotText === null" class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
+                                            <span>Δες στο μυαλό μου</span>
                                             <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                     </div>
                                     <div v-else class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
+                                            <span>Δες στο μυαλό μου</span>
                                             <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                         <div class="board-div d-flex justify-content-center">
@@ -161,11 +163,22 @@
 
     .think {
         position: absolute;
-        width: 5em;
         height: 5em;
-        left: 10%;
-        -webkit-animation: fadeinout 3s infinite;
-        animation: fadeinout 3s infinite;
+        left: -7%;
+        animation: fadeinout-data-v-3d04adc2 3s infinite;
+    }
+
+    .think img {
+        width: 5rem;
+    }
+
+    .think span {
+        float: left;
+        width: 100px;
+        padding-top: 25px;
+        line-height: 1.1em;
+        color: azure;
+        margin-right: -9px;
     }
 
     @-webkit-keyframes fadeinout {
