@@ -166,6 +166,10 @@
         height: 5em;
         left: -7%;
         animation: fadeinout-data-v-3d04adc2 3s infinite;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .think img {
@@ -218,6 +222,10 @@
         padding-left: 0.5em;
         padding-right: 0.5em;
         margin-left: 1em;
+
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .board-text {

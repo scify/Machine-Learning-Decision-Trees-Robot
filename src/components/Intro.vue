@@ -36,15 +36,15 @@
                         <div class="col-4 h-75 blue-line d-flex justify-content-center">
                             <div class="col-1"></div>
                             <div class="col-4 d-flex h100">
-                                <div class="align-self-center h-75">
+                                <a href="http://www.demokritos.gr/" target="_blank" class="align-self-center h-75">
                                     <img v-bind:src="demokritosImage" style="height: 100%; max-width: 100%">
-                                </div>
+                                </a>
                             </div>
                             <div class="col-2"></div>
                             <div class="col-4  d-flex h-100">
-                                <div class="align-self-center h-75">
+                                <a href="https://www.scify.gr/site/en" target="_blank" class="align-self-center h-75">
                                     <img v-bind:src="scifyImage" style="height: 100%; max-width: 100%">
-                                </div>
+                                </a>
                             </div>
                             <div class="col-1"></div>
 
@@ -90,8 +90,7 @@
                 return this.images["scify"];
             }
         },
-        methods: {
-        },
+        methods: {},
         mounted() {
         }
     }

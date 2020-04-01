@@ -29,18 +29,18 @@
                             <div class="col-12 h-75 d-flex justify-content-center align-content-center no-gutters">
                                 <div class="align-self-center col-12 outro-text-2 no-gutters">
                                     <ol type="1">
-                                        <li>Ο Θαλής μαθαίνει με παραδείγματα!</li>
-                                        <li>Όσα περισσότερα τόσο το καλύτερο;
-                                            <ol type="i">
-                                                <li>Συνήθως ναι.</li>
-                                                <li>Αλλά μόνο αν αυτά είναι σωστά!</li>
-                                            </ol>
+                                        <li>Ο Θαλής μαθαίνει με παραδείγματα!
+                                            -Όσα περισσότερα τόσο το καλύτερο;
+                                            -Συνήθως ναι. Αλλά μόνο αν αυτά είναι σωστά!
                                         </li>
-                                        <li>Τι άλλο χρειάζεται όμως για να μάθει ο Θαλής;
-                                            <ol type="i">
-                                                <li>Κάποια χαρακτηριστικά όπως το χρώμα.</li>
-                                                <li>Ένας αλγόριθμος μάθησης όπως τα Δένδρα Απόφασης.</li>
-                                            </ol>
+                                        <li>
+                                            Κατα την επιλογη των παραδειγμάτων επιλέγουμε τα πιο αντιπροσωπευτικά
+                                            χαρακτηριστικά. Αν ειχαμε επιλέξει ως χαρακτηριστικό μόνο "το κοτσάνι" δε θα
+                                            μπορούσαμε να διαφοροποιήσουμε μήλα απο πορτοκάλια.
+                                        </li>
+                                        <li>
+                                            Τα Δένδρα απόφασης που είδαμε σε αυτή την άσκηση ειναι ένας απο τους πολλούς
+                                            διαφορετικους αλγορίθμους μάθησης
                                         </li>
                                     </ol>
                                 </div>
@@ -52,17 +52,21 @@
                                         <div class="col-8 h-100 d-flex justify-content-center">
                                             <div class="col-1"></div>
                                             <div class="col-4 d-flex h100">
-                                                <div class="align-self-center h-75">
+
+                                                <a href="http://www.demokritos.gr/" target="_blank"
+                                                   class="align-self-center h-75">
                                                     <img v-bind:src="demokritosImage"
                                                          style="height: 100%; max-width: 100%">
-                                                </div>
+                                                </a>
                                             </div>
                                             <div class="col-2"></div>
                                             <div class="col-4  d-flex h-100">
-                                                <div class="align-self-center h-75">
+
+                                                <a href="https://www.scify.gr/site/en" target="_blank"
+                                                   class="align-self-center h-75">
                                                     <img v-bind:src="scifyImage"
                                                          style="height: 100%; max-width: 100%">
-                                                </div>
+                                                </a>
                                             </div>
                                             <div class="col-1"></div>
 
@@ -75,7 +79,9 @@
                     </div>
                     <div class="row d-flex justify-content-center align-content-center"
                          style="width: 100%; height: 10%">
-                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reload')">ΞΕΚΙΝΑ ΞΑΝΑ</div>
+                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reload')">ΞΕΚΙΝΑ
+                            ΞΑΝΑ
+                        </div>
                     </div>
                 </div>
             </div>
