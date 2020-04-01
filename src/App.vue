@@ -47,6 +47,15 @@
                 <p class="label">Αυτό είναι ένα <b>{{ item.label }}</b></p>
             </div>
         </div>-->
+        <div class="container mt-3 mb-2">
+            <div class="row">
+                <div class="col small p-0">
+                    Created by <a href="https://www.scify.gr/site/en"
+                                  target="_blank">SciFY</a> and
+                    <a href="http://www.demokritos.gr/" target="_blank">NCSR Demokritos</a>
+                </div>
+            </div>
+        </div>
         <cookies-consent></cookies-consent>
     </div>
 </template>
@@ -222,7 +231,7 @@
     .big-box {
         display: flex;
         flex-flow: column;
-        height: 100%;
+        height: 90%;
         align-items: center;
         justify-content: center;
     }
