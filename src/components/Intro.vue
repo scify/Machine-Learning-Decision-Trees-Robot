@@ -99,7 +99,7 @@
 <style scoped lang="scss">
     .start-button-intro {
         position: absolute;
-        top: 50%;
+        top: 42%;
         left: 50%;
         width: 10%;
         transform: translate(-50%, -20%);

@@ -44,7 +44,7 @@
         border-width: thin;
         border-color: #464d5f;
         position: absolute;
-        top: 50%;
+        top: 42%;
         left: 52%;
         height: 7%;
         width: auto;
