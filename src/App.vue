@@ -255,6 +255,9 @@
         width: 25%;
         height: auto;
         text-align: center;
+        &:hover {
+            cursor: pointer;
+        }
     }
 
     .training-set-container {
