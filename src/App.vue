@@ -225,6 +225,10 @@
         margin: 0;
     }
 
+    .container {
+        width: 1140px;
+    }
+
     .cursor-pointer {
         cursor: pointer;
     }
