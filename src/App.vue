@@ -217,6 +217,7 @@
     @import '~bootstrap/scss/bootstrap';
     @import '~bootstrap-vue/dist/bootstrap-vue.css';
     @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+    @import "assets/custom";
 
     html,
     body {
