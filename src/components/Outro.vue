@@ -130,8 +130,9 @@
 
     .outro-text-2 {
         font-family: "Roboto";
-        font-size: x-large;
+        font-size: 1.2rem;
         color: #606060;
+        line-height: 1.5rem;
         text-align: left;
     }
 
