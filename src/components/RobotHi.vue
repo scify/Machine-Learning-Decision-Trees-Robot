@@ -5,9 +5,9 @@
                  class="h-100 w-100 bubble-position">
                 <div class="text-box d-flex justify-content-start align-content-center">
                     <div class="align-self-center">
-                        <span class="yellowText">Γειά! Είμαι ο Θαλής!</span>
+                        <span class="yellowText">{{ $t("intro_hello") }}</span>
                         <br>
-                        <span class="whiteText">Αυτή τη στιγμή δε γνωρίζω τίποτα,<br>αλλά έχω την ικανότητα να μαθαίνω!</span>
+                        <span class="whiteText" v-html="$t('intro_text')"></span>
                     </div>
                 </div>
             </div>
@@ -24,25 +24,25 @@
     </div>
 </template>
 <script>
-    export default {
-        props: ['images'],
-        components: {
+export default {
+    props: ["images"],
+    components: {
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        robotImage() {
+            return this.images["robot-hi"];
         },
-        data() {
-            return {}
-        },
-        computed: {
-            robotImage() {
-                return this.images["robot-hi"];
-            },
-            textBubbleImage() {
-                return this.images["text-bubble"];
-            }
-        },
-        methods: {},
-        mounted() {
+        textBubbleImage() {
+            return this.images["text-bubble"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">
@@ -67,13 +67,13 @@
     }
 
     .yellowText {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: x-large;
         color: #fddd02;
     }
 
     .whiteText {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: large;
         color: #ffffff;
     }

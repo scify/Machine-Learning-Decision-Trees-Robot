@@ -10,7 +10,7 @@
                     <element-presentation v-bind:element="this.element"/>
                     <div class="row d-flex justify-content-center align-content-center" style="height: 10%">
                         <div class="col-4 h-100 align-self-center pt-4">
-                            <button class="btn orange-btn" v-on:click="$emit('complete')"><i>Θαλή; Τι είναι αυτό;</i>
+                            <button class="btn orange-btn" v-on:click="$emit('complete')"><i>{{ $t("what_is_this") }}</i>
                             </button>
                         </div>
                     </div>
@@ -20,32 +20,32 @@
     </div>
 </template>
 <script>
-    export default {
-        props: [
-            'images',
-            'element'
-        ],
-        components: {
-            RobotHi: () => import('./RobotHi.vue'),
-            ElementPresentation: () => import('./ElementPresentation')
-        },
-        data() {
-            return {}
-        },
-        computed: {
-            bgImage() {
-                return this.images["defaultBackground"];
-            }
-        },
-        methods: {},
-        mounted() {
+export default {
+    props: [
+        "images",
+        "element"
+    ],
+    components: {
+        RobotHi: () => import("./RobotHi.vue"),
+        ElementPresentation: () => import("./ElementPresentation")
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        bgImage() {
+            return this.images["defaultBackground"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">
     .orange-btn {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: large;
         background-color: #fd7202;
         border-style: solid;

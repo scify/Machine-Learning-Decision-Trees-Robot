@@ -58,42 +58,42 @@
 </template>
 
 <script>
-    export default {
-        props: ['images'],
-        components: {},
-        data() {
-            return {}
+export default {
+    props: ["images"],
+    components: {},
+    data() {
+        return {};
+    },
+    computed: {
+        bgImage() {
+            return this.images["introBackground"];
         },
-        computed: {
-            bgImage() {
-                return this.images["introBackground"];
-            },
-            buttonImage() {
-                return this.images["introButton"];
-            },
-            robotImage() {
-                return this.images["introRobot"];
-            },
-            text1Image() {
-                return this.images["introText1"];
-            },
-            text2Image() {
-                return this.images["introText2"];
-            },
-            text3Image() {
-                return this.images["introText3"];
-            },
-            demokritosImage() {
-                return this.images["demokritos"];
-            },
-            scifyImage() {
-                return this.images["scify"];
-            }
+        buttonImage() {
+            return this.images["introButton"];
         },
-        methods: {},
-        mounted() {
+        robotImage() {
+            return this.images["introRobot"];
+        },
+        text1Image() {
+            return this.images["introText1"];
+        },
+        text2Image() {
+            return this.images["introText2"];
+        },
+        text3Image() {
+            return this.images["introText3"];
+        },
+        demokritosImage() {
+            return this.images["demokritos"];
+        },
+        scifyImage() {
+            return this.images["scify"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">

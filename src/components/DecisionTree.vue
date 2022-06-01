@@ -3,58 +3,58 @@
 </template>
 
 <script>
-    export default {
-        props: [
-            'decisionTree'
-        ],
-        components: {
-        },
-        data() {
-            return {}
-        },
-        computed: {
-            treeAsHtml: function () {
-                if (this.decisionTree == null)
-                    return [].join('');
-                else
-                    return this.treeToHtml(this.decisionTree.root);
-            }
-        },
-        methods: {
-            treeToHtml(tree) {
-                // only leafs containing category
-                if (tree.category) {
-                    return ['<ul>',
-                        '<li>',
-                        '<a href="#">',
-                        '<b>', tree.category, '</b>',
-                        '</a>',
-                        '</li>',
-                        '</ul>'].join('');
-                }
-
-                return ['<ul>',
-                    '<li>',
-                    '<a href="#">',
-                    '<b>', tree.attribute, ' ', tree.predicateName, ' ', tree.pivot, ' ?</b>',
-                    '</a>',
-                    '<ul>',
-                    '<li>',
-                    '<a href="#">Ναι</a>',
-                    this.treeToHtml(tree.match),
-                    '</li>',
-                    '<li>',
-                    '<a href="#">Οχι</a>',
-                    this.treeToHtml(tree.notMatch),
-                    '</li>',
-                    '</ul>',
-                    '</li>',
-                    '</ul>'].join('');
-            }
-        },
-        mounted() {
+export default {
+    props: [
+        "decisionTree"
+    ],
+    components: {
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        treeAsHtml: function () {
+            if (this.decisionTree == null)
+                return [].join("");
+            else
+                return this.treeToHtml(this.decisionTree.root);
         }
+    },
+    methods: {
+        treeToHtml(tree) {
+            // only leafs containing category
+            if (tree.category) {
+                return ["<ul>",
+                    "<li>",
+                    "<a href=\"#\">",
+                    "<b>", tree.category, "</b>",
+                    "</a>",
+                    "</li>",
+                    "</ul>"].join("");
+            }
+
+            return ["<ul>",
+                "<li>",
+                "<a href=\"#\">",
+                "<b>", tree.attribute, " ", tree.predicateName, " ", tree.pivot, " ?</b>",
+                "</a>",
+                "<ul>",
+                "<li>",
+                "<a href=\"#\">" + this.$t("yes") + "</a>",
+                this.treeToHtml(tree.match),
+                "</li>",
+                "<li>",
+                "<a href=\"#\">" + this.$t("no") + "</a>",
+                this.treeToHtml(tree.notMatch),
+                "</li>",
+                "</ul>",
+                "</li>",
+                "</ul>"].join("");
+        }
+    },
+    mounted() {
     }
+};
 </script>
 
 <style lang="scss">

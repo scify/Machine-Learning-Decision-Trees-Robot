@@ -5,9 +5,9 @@
             <div class="align-self-center" style="max-width: 60%"><img :src="element.img" class="img-fluid"></div>
         </div>
         <div class="h-100 col-6 no-gutters pl-0 d-flex flex-column justify-content-center align-content-center">
-            <div class="element-text p-1 ml-1">Χρώμα: <b>{{ element.χρώμα }}</b></div>
-            <div class="element-text p-1 ml-1">Βάρος: <b>{{ element.βάρος }} γρ.</b></div>
-            <div class="element-text p-1 ml-1">Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></div>
+            <div class="element-text p-1 ml-1">{{ $t('color') }}: <b>{{ element[$t('attr_1')] }}</b></div>
+            <div class="element-text p-1 ml-1">{{ $t('weight') }}: <b>{{ element[$t('attr_2')] }} {{ $t('grams') }}.</b></div>
+            <div class="element-text p-1 ml-1">{{ $t('stem') }}: <b>{{ element[$t('attr_3')] ? $t('yes') : $t('no') }}</b></div>
         </div>
     </div>
     <div class="row d-flex justify-content-center align-content-center align-self-center box-grey" v-else>
@@ -15,34 +15,34 @@
             <div class="align-self-center" style="max-width: 90%"><img :src="element.img" class="img-fluid"></div>
         </div>
         <div class="h-100 col-6 no-gutters pl-0 d-flex flex-column justify-content-center align-content-center">
-            <div class="element-text p-2 ml-3">Χρώμα: <b>{{ element.χρώμα }}</b></div>
-            <div class="element-text p-2 ml-3">Βάρος: <b>{{ element.βάρος }} γρ.</b></div>
-            <div class="element-text p-2 ml-3">Κοτσάνι: <b>{{ element.κοτσάνι ? 'Ναι' : 'Όχι' }}</b></div>
+            <div class="element-text p-2 ml-3">{{ $t('color') }}: <b>{{ element[$t('attr_1')] }}</b></div>
+            <div class="element-text p-2 ml-3">{{ $t('weight') }}: <b>{{ element[$t('attr_2')] }} {{ $t('grams') }}.</b></div>
+            <div class="element-text p-2 ml-3">{{ $t('stem') }}: <b>{{ element[$t('attr_3')] ? $t('yes') : $t('no') }}</b></div>
         </div>
     </div>
 </template>
 <script>
-    export default {
-        props: [
-            'element',
-            'modelMode'
-        ],
-        components: {},
-        data() {
-            return {}
-        },
-        computed: {},
-        methods: {},
-        mounted() {
+export default {
+    props: [
+        "element",
+        "modelMode"
+    ],
+    components: {},
+    data() {
+        return {};
+    },
+    computed: {},
+    methods: {},
+    mounted() {
 
-        }
     }
+};
 </script>
 
 <style scoped lang="scss">
 
     .element-text {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: 1.4em;
     }
 

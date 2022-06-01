@@ -1,0 +1,78 @@
+{
+  "features": [
+    "Apple",
+    "Orange"
+  ],
+  "data": [
+    {
+      "id":1,
+      "color": "red",
+      "stem": true,
+      "img": "instances/apple_red_50_yes.jpg",
+      "weight": 50
+    },
+    {
+      "id":2,
+      "color": "green",
+      "stem": true,
+      "img": "instances/orange_green_35_yes.jpg",
+      "weight": 35
+    },
+    {
+      "id":3,
+      "color": "golden",
+      "stem": false,
+      "img": "instances/apple_gold_150_no.jpg",
+      "weight": 150
+    },
+    {
+      "id":4,
+      "color": "orange",
+      "stem": true,
+      "img": "instances/orange_orange_56_yes.jpg",
+      "weight": 56
+    },
+    {
+      "id":5,
+      "color": "orange",
+      "stem": false,
+      "img": "instances/orange_orange_80_no.jpg",
+      "weight": 80
+    },
+    {
+      "id":6,
+      "color": "red",
+      "stem": true,
+      "img": "instances/apple_red_45_yes.jpg",
+      "weight": 45
+    },
+    {
+      "id":7,
+      "color": "red",
+      "stem": true,
+      "img": "instances/apple_red_65_yes.jpg",
+      "weight": 65
+    },
+    {
+      "id":8,
+      "color": "orange",
+      "stem": false,
+      "img": "instances/orange_orange_37_no.jpg",
+      "weight": 37
+    },
+    {
+      "id":9,
+      "color": "green",
+      "stem": true,
+      "img": "instances/apple_green_50_yes.jpg",
+      "weight": 50
+    },
+    {
+      "id":10,
+      "color": "orange",
+      "stem": false,
+      "img": "instances/orange_orange_62_no.jpg",
+      "weight": 62
+    }
+  ]
+}

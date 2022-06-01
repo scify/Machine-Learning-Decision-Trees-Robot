@@ -30,39 +30,39 @@
 </template>
 
 <script>
-    import {setOptions, bootstrap} from 'vue-gtag'
+import {setOptions, bootstrap} from "vue-gtag";
 
-    const THALES_COOKIES_SET = 'THALES_COOKIES_SET';
+const THALES_COOKIES_SET = "THALES_COOKIES_SET";
 
-    export default {
-        data() {
-            return {
-                cookiesAreSet: false
-            }
-        },
-        created() {
+export default {
+    data() {
+        return {
+            cookiesAreSet: false
+        };
+    },
+    created() {
+        this.updateGA();
+    },
+    methods: {
+        saveConsent(allowCookies) {
+            this.$cookies.set(THALES_COOKIES_SET, allowCookies);
             this.updateGA();
         },
-        methods: {
-            saveConsent(allowCookies) {
-                this.$cookies.set(THALES_COOKIES_SET, allowCookies);
-                this.updateGA();
-            },
-            updateGA() {
-                console.log(process.env.VUE_APP_GA_ID);
-                setOptions({
-                    config: {id: process.env.VUE_APP_GA_ID},
-                    enabled: this.$cookies.isKey(THALES_COOKIES_SET) ? this.$cookies.get(THALES_COOKIES_SET) : false
-                });
+        updateGA() {
+            console.log(process.env.VUE_APP_GA_ID);
+            setOptions({
+                config: {id: process.env.VUE_APP_GA_ID},
+                enabled: this.$cookies.isKey(THALES_COOKIES_SET) ? this.$cookies.get(THALES_COOKIES_SET) : false
+            });
 
-                bootstrap().then((gtag) => {
-                    console.log("GA enabled", gtag);
-                });
-                this.cookiesAreSet = this.$cookies.isKey(THALES_COOKIES_SET);
-            }
+            bootstrap().then((gtag) => {
+                console.log("GA enabled", gtag);
+            });
+            this.cookiesAreSet = this.$cookies.isKey(THALES_COOKIES_SET);
         }
-
     }
+
+};
 </script>
 
 <style scoped>

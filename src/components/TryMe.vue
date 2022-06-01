@@ -16,26 +16,26 @@
     </div>
 </template>
 <script>
-    export default {
-        props: ['images'],
-        components: {
-            RobotHi: () => import('./RobotHi.vue')
+export default {
+    props: ["images"],
+    components: {
+        RobotHi: () => import("./RobotHi.vue")
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        bgImage() {
+            return this.images["tryMeBackground"];
         },
-        data() {
-            return {}
-        },
-        computed: {
-            bgImage() {
-                return this.images["tryMeBackground"];
-            },
-            buttonImage() {
-                return this.images["tryMeButton"];
-            }
-        },
-        methods: {},
-        mounted() {
+        buttonImage() {
+            return this.images["tryMeButton"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">

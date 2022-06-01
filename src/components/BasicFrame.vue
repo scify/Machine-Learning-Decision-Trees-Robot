@@ -11,15 +11,15 @@
                                      class="h-100 w-100 bubble-position" v-if="robotText === null">
                                     <div class="text-box d-flex justify-content-center align-content-center">
                                         <div class="align-self-center" v-if="lastTrainingInput">
-                                            <span class="whiteText">Ώστε είναι ένα </span>
+                                            <span class="whiteText">{{ $t('so_its_an') }} </span>
                                             <span class="yellowText">{{ lastTrainingInput }} </span>
                                             <span class="whiteText">!</span>
                                         </div>
                                         <div class="align-self-center" v-else>
-                                            <span class="whiteText">Νομίζω ότι ξέρω τι είναι!</span>
+                                            <span class="whiteText">{{ $t("i_have_the_answer") }}!</span>
                                             <br>
-                                            <span class="yellowText">Να σου πω;</span>
-                                            <span class="predict-btn" v-on:click="classify">ΝΑΙ</span>
+                                            <span class="yellowText">{{ $t('should_i_tell_you') }}</span>
+                                            <span class="predict-btn" v-on:click="classify">{{ $t('yes') }}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -29,9 +29,9 @@
                                      class="h-100 w-100 bubble-position">
                                     <div class="text-box d-flex justify-content-center align-content-center">
                                         <div class="align-self-center">
-                                            <span class="whiteText">Πρώτη φορά βλέπω κάτι τέτοιο!</span>
+                                            <span class="whiteText">{{ $t('first_time') }}</span>
                                             <br>
-                                            <span class="yellowText">Βοήθησέ με να μάθω!</span>
+                                            <span class="yellowText">{{ $t('help_me_to_learn') }}!</span>
                                         </div>
                                     </div>
                                 </div>
@@ -43,14 +43,14 @@
                                     <div v-if="robotText === null" class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
-                                            <span>Δες στο μυαλό μου</span>
+                                            <span>{{ $t('see_my_brain') }}</span>
                                             <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                     </div>
                                     <div v-else class="h-100 col-11"
                                          :style="{backgroundImage: `url('${ robotWithBoardImage }')`, backgroundRepeat: `no-repeat`, backgroundSize: `contain`}">
                                         <div class="think" v-on:click="$emit('how-it-works')">
-                                            <span>Δες στο μυαλό μου</span>
+                                            <span>{{ $t('see_my_brain') }}</span>
                                             <img v-bind:src="thinkImage" class="img-fluid cursor-pointer">
                                         </div>
                                         <div class="board-div d-flex justify-content-center">
@@ -84,7 +84,7 @@
                                    v-bind:nextButton="this.nextButton"/>
                     </div>
                     <div class="row d-flex justify-content-end align-content-center" style="width: 100%; height: 10%">
-                        <div class="finish-btn align-self-center" v-on:click="$emit('finish')">ΤΕΛΟΣ</div>
+                        <div class="finish-btn align-self-center" v-on:click="$emit('finish')">{{ $t('end') }}</div>
                     </div>
                 </div>
             </div>
@@ -92,46 +92,46 @@
     </div>
 </template>
 <script>
-    export default {
-        props: [
-            'images',
-            'decisionTree',
-            'lastTrainingInput',
-            'element',
-            'features',
-            'addElementToTrainingSet',
-            'nextButton',
-            'robotText',
-            'classify'
-        ],
-        components: {
-            ElementPresentation: () => import('./ElementPresentation'),
-            Annotator: () => import('./Annotator'),
+export default {
+    props: [
+        "images",
+        "decisionTree",
+        "lastTrainingInput",
+        "element",
+        "features",
+        "addElementToTrainingSet",
+        "nextButton",
+        "robotText",
+        "classify"
+    ],
+    components: {
+        ElementPresentation: () => import("./ElementPresentation"),
+        Annotator: () => import("./Annotator"),
+    },
+    data() {
+        return {};
+    },
+    computed: {
+        bgImage() {
+            return this.images["defaultBackground"];
         },
-        data() {
-            return {}
+        textBubbleImage() {
+            return this.images["text-bubble"];
         },
-        computed: {
-            bgImage() {
-                return this.images["defaultBackground"];
-            },
-            textBubbleImage() {
-                return this.images["text-bubble"];
-            },
-            robotWithBoardImage() {
-                return this.images["robotWithBoard"];
-            },
-            robotImage() {
-                return this.images["basicFrameRobot"];
-            },
-            thinkImage() {
-                return this.images["think"];
-            }
+        robotWithBoardImage() {
+            return this.images["robotWithBoard"];
         },
-        methods: {},
-        mounted() {
+        robotImage() {
+            return this.images["basicFrameRobot"];
+        },
+        thinkImage() {
+            return this.images["think"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">
@@ -150,13 +150,13 @@
     }
 
     .yellowText {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: x-large;
         color: #fddd02;
     }
 
     .whiteText {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: large;
         color: #ffffff;
     }
@@ -210,7 +210,7 @@
     }
 
     .predict-btn {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         color: white;
         border-style: dashed;
         border-color: white;
@@ -229,7 +229,7 @@
     }
 
     .board-text {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: x-large;
         color: #606060;
     }

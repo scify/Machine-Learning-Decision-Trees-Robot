@@ -29,18 +29,11 @@
                             <div class="col-12 h-75 d-flex justify-content-center align-content-center no-gutters">
                                 <div class="align-self-center col-12 outro-text-2 no-gutters">
                                     <ol type="1">
-                                        <li>Ο Θαλής μαθαίνει με παραδείγματα!
-                                            -Όσα περισσότερα τόσο το καλύτερο;
-                                            -Συνήθως ναι. Αλλά μόνο αν αυτά είναι σωστά!
+                                        <li v-html="$t('outro_explanation_1')" class="mb-3">
                                         </li>
-                                        <li>
-                                            Κατα την επιλογη των παραδειγμάτων επιλέγουμε τα πιο αντιπροσωπευτικά
-                                            χαρακτηριστικά. Αν ειχαμε επιλέξει ως χαρακτηριστικό μόνο "το κοτσάνι" δε θα
-                                            μπορούσαμε να διαφοροποιήσουμε μήλα απο πορτοκάλια.
+                                        <li v-html="$t('outro_explanation_2')" class="mb-3">
                                         </li>
-                                        <li>
-                                            Τα Δένδρα απόφασης που είδαμε σε αυτή την άσκηση ειναι ένας απο τους πολλούς
-                                            διαφορετικους αλγορίθμους μάθησης
+                                        <li v-html="$t('outro_explanation_3')" class="mb-3">
                                         </li>
                                     </ol>
                                 </div>
@@ -79,8 +72,8 @@
                     </div>
                     <div class="row d-flex justify-content-center align-content-center"
                          style="width: 100%; height: 10%">
-                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reload')">ΞΕΚΙΝΑ
-                            ΞΑΝΑ
+                        <div class="forget-btn align-self-center cursor-pointer" v-on:click="$emit('reload')">
+                          {{ $t('again_button') }}
                         </div>
                     </div>
                 </div>
@@ -90,35 +83,35 @@
 </template>
 
 <script>
-    export default {
-        props: ["images"],
-        components: {},
-        data() {
-            return {}
+export default {
+    props: ["images"],
+    components: {},
+    data() {
+        return {};
+    },
+    computed: {
+        bgImage() {
+            return this.images["defaultBackground"];
         },
-        computed: {
-            bgImage() {
-                return this.images["defaultBackground"];
-            },
-            robotImage() {
-                return this.images["outroRobot"];
-            },
-            demokritosImage() {
-                return this.images["demokritos"];
-            },
-            scifyImage() {
-                return this.images["scify"];
-            }
+        robotImage() {
+            return this.images["outroRobot"];
         },
-        methods: {},
-        mounted() {
+        demokritosImage() {
+            return this.images["demokritos"];
+        },
+        scifyImage() {
+            return this.images["scify"];
         }
+    },
+    methods: {},
+    mounted() {
     }
+};
 </script>
 
 <style scoped lang="scss">
     .outro-text-1 {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: x-large;
         color: #606060;
         border-style: dashed;
@@ -129,7 +122,7 @@
     }
 
     .outro-text-2 {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: 1.2rem;
         color: #606060;
         line-height: 1.5rem;
@@ -146,7 +139,7 @@
     }
 
     .forget-btn {
-        font-family: "Roboto";
+        font-family: "Roboto", sans-serif;
         font-size: medium;
         background-color: #0c5460;
         border-style: solid;
