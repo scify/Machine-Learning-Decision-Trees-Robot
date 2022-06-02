@@ -4,6 +4,19 @@
         <div class="start-button-intro cursor-pointer">
             <img v-bind:src="buttonImage" class="img-fluid" v-on:click="$emit('complete')">
         </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-2 col-md-3 col-sm-9">
+                    <div class="locale-changer form-group">
+                        <select v-model="$i18n.locale" @change="setLang" class="form-control">
+                            <option v-for="(lang, i) in langs" :key="`Lang${i}`" :value="lang.code">
+                                {{ lang.name }}
+                            </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="container h-100 ">
             <div class="col-12 h-50 d-flex justify-content-center">
                 <img v-bind:src="robotImage" class="robot-intro">
@@ -58,11 +71,15 @@
 </template>
 
 <script>
+import { languagesMap } from "@/i18n";
+
 export default {
     props: ["images"],
     components: {},
     data() {
-        return {};
+        return {
+            langs: languagesMap,
+        };
     },
     computed: {
         bgImage() {
@@ -88,99 +105,115 @@ export default {
         },
         scifyImage() {
             return this.images["scify"];
-        }
+        },
     },
-    methods: {},
+    methods: {
+        setLang(event) {
+            const url = new URL(window.location);
+            url.searchParams.set("lang", event.target.value);
+            window.history.pushState({}, "", url);
+        },
+    },
     mounted() {
-    }
+    },
 };
 </script>
 
 <style scoped lang="scss">
-    .start-button-intro {
-        position: absolute;
-        top: 42%;
+.start-button-intro {
+    position: absolute;
+    top: 42%;
+    left: 50%;
+    width: 10%;
+    transform: translate(-50%, -20%);
+    z-index: 2;
+    animation-fill-mode: forwards;
+    animation: start-button-intro-movement 2.5s linear;
+}
+
+@keyframes start-button-intro-movement {
+    0% {
+        left: 20%;
+    }
+    100% {
         left: 50%;
-        width: 10%;
-        transform: translate(-50%, -20%);
-        z-index: 2;
-        animation-fill-mode: forwards;
-        animation: start-button-intro-movement 2.5s linear;
     }
+}
 
-    @keyframes start-button-intro-movement {
-        0% {
-            left: 20%;
-        }
-        100% {
-            left: 50%;
-        }
-    }
+.robot-intro {
+    height: 90%;
+    width: auto;
+    position: relative;
+    top: 20%;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s, MoveUpDown 3s linear infinite;
+}
 
-    .robot-intro {
-        height: 90%;
-        width: auto;
-        position: relative;
+.text1-intro {
+    opacity: 0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 0.5s;
+}
+
+.text2-intro {
+    opacity: 0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1s;
+}
+
+.text3-intro {
+    opacity: 0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 1.5s;
+}
+
+@keyframes MoveUpDown {
+    0%,
+    100% {
         top: 20%;
-        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-        -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s, MoveUpDown 3s linear infinite;
     }
+    50% {
+        top: 10%;
+    }
+}
 
-    .text1-intro {
-        opacity: 0;
-        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-        -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s;
-        animation-fill-mode: forwards;
-        animation-delay: 0.5s;
-    }
+.blue-line {
+    width: 100%;
+    border-top: 3px solid #4477a6;
+    opacity: 0;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+    -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+    animation: fadein 2s;
+    animation-fill-mode: forwards;
+    animation-delay: 2s;
+}
 
-    .text2-intro {
-        opacity: 0;
-        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-        -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s;
-        animation-fill-mode: forwards;
-        animation-delay: 1s;
-    }
+.locale-changer {
+    padding-top: 1rem;
 
-    .text3-intro {
-        opacity: 0;
-        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-        -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s;
-        animation-fill-mode: forwards;
-        animation-delay: 1.5s;
+    select {
+        border-color: #5C6BC0;
     }
+}
 
-    @keyframes MoveUpDown {
-        0%, 100% {
-            top: 20%;
-        }
-        50% {
-            top: 10%;
-        }
-    }
-
-    .blue-line {
-        width: 100%;
-        border-top: 3px solid #4477a6;
-        opacity: 0;
-        -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
-        -moz-animation: fadein 2s; /* Firefox < 16 */
-        -ms-animation: fadein 2s; /* Internet Explorer */
-        -o-animation: fadein 2s; /* Opera < 12.1 */
-        animation: fadein 2s;
-        animation-fill-mode: forwards;
-        animation-delay: 2s;
-    }
 </style>

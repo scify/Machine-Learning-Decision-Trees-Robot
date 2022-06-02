@@ -30,14 +30,14 @@
 </template>
 
 <script>
-import {setOptions, bootstrap} from "vue-gtag";
+import { setOptions, bootstrap } from "vue-gtag";
 
 const THALES_COOKIES_SET = "THALES_COOKIES_SET";
 
 export default {
     data() {
         return {
-            cookiesAreSet: false
+            cookiesAreSet: false,
         };
     },
     created() {
@@ -49,29 +49,30 @@ export default {
             this.updateGA();
         },
         updateGA() {
-            console.log(process.env.VUE_APP_GA_ID);
             setOptions({
-                config: {id: process.env.VUE_APP_GA_ID},
-                enabled: this.$cookies.isKey(THALES_COOKIES_SET) ? this.$cookies.get(THALES_COOKIES_SET) : false
+                config: { id: process.env.VUE_APP_GA_ID },
+                enabled: this.$cookies.isKey(THALES_COOKIES_SET) ? this.$cookies.get(THALES_COOKIES_SET) : false,
             });
 
+            // eslint-disable-next-line no-unused-vars
             bootstrap().then((gtag) => {
-                console.log("GA enabled", gtag);
+                // console.log("GA enabled", gtag);
             });
             this.cookiesAreSet = this.$cookies.isKey(THALES_COOKIES_SET);
-        }
-    }
+        },
+    },
 
 };
 </script>
 
 <style scoped>
 
-    .main-banner {
-        background-color: #6EDAE3;
-    }
-    a:hover {
-        cursor: pointer;
-    }
+.main-banner {
+    background-color: #6EDAE3;
+}
+
+a:hover {
+    cursor: pointer;
+}
 
 </style>

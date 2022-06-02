@@ -5,5 +5,16 @@ export const defaultLocale = "el";
 
 export const languages = {
     el: el,
-    en: en
+    en: en,
 };
+
+export const languagesMap = [
+    {
+        code: "el",
+        name: "Ελληνικά",
+    },
+    {
+        code: "en",
+        name: "English",
+    }
+];
