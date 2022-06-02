@@ -9,7 +9,7 @@
 This is a playground for Machine Learning.
 It visualises a simple example in which the user is prompted to enrich the training set of a Decision Tree algorithm.
 
-A demo (in Greek) can be found [here](https://scify.github.io/Machine-Learning-JS-playground/).
+A demo (in English and Greek) can be found [here](https://scify.github.io/Machine-Learning-JS-playground/).
 
 This project uses the [decision-tree-js](https://github.com/lagodiuk/decision-tree-js) library.
 
