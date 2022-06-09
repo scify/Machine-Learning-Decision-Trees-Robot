@@ -41,3 +41,11 @@ npm run test
 ```
 npm run lint
 ```
+
+### Deploy to GitHub Pages
+
+```bash
+chmod +x deploy.sh
+
+./deploy.sh
+```
