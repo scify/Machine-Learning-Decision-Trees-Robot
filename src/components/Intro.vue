@@ -112,6 +112,7 @@ export default {
             const url = new URL(window.location);
             url.searchParams.set("lang", event.target.value);
             window.history.pushState({}, "", url);
+            window.location.reload();
         },
     },
     mounted() {

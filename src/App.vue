@@ -1,6 +1,6 @@
 <template>
     <div id="allPages" class="big-box">
-        <div class="border border-dark" style="height: 675px; width: 1200px">
+        <div class="border border-dark" style="height: 825px; width: 1350px">
             <transition name="fade" mode="out-in">
                 <Intro v-if="this.currentFrame == 0"
                        v-bind:images="this.images"
@@ -91,21 +91,23 @@ export default {
                 let img = new Image();
                 img.src = url;
                 img.onload = () => {
-                    //console.log("Image:" + url + " preloaded");
+                    console.log("Image:" + url + " preloaded");
                 };
             }
         },
         loadInitialImages() {
+            console.log("loadInitialImages", this.$i18n.locale);
             this.preLoadImage("introBackground", "introFrame/bg.jpg");
-            this.preLoadImage("introButton", "introFrame/button-go.png");
+            console.log("ready to preload", this.$i18n.locale);
+            this.preLoadImage("introButton", this.$i18n.locale + "/introFrame/button-go.png");
             this.preLoadImage("introRobot", "introFrame/robot.png");
-            this.preLoadImage("introText1", "introFrame/text1.png");
-            this.preLoadImage("introText2", "introFrame/text2.png");
-            this.preLoadImage("introText3", "introFrame/text3.png");
+            this.preLoadImage("introText1", this.$i18n.locale + "/introFrame/text1.png");
+            this.preLoadImage("introText2", this.$i18n.locale + "/introFrame/text2.png");
+            this.preLoadImage("introText3", this.$i18n.locale + "/introFrame/text3.png");
             this.preLoadImage("demokritos", "demokritos.jpg");
             this.preLoadImage("scify", "SciFY.png");
             this.preLoadImage("tryMeBackground", "tryMeFrame/bg.jpg");
-            this.preLoadImage("tryMeButton", "tryMeFrame/buttonIcon.png");
+            this.preLoadImage("tryMeButton", this.$i18n.locale + "/tryMeFrame/buttonIcon.png");
             this.preLoadImage("robot-hi", "robot-hi.png");
             this.preLoadImage("text-bubble", "text-bubble.png");
         },
@@ -202,7 +204,6 @@ export default {
         },
     },
     async mounted() {
-        this.loadInitialImages();
         this.resetState();
         let urlParams = new URLSearchParams(window.location.search);
         if (urlParams.has("lang")) {
@@ -211,6 +212,7 @@ export default {
                 this.$i18n.locale = lang;
             }
         }
+        this.loadInitialImages();
         await this.reload();
     },
 };

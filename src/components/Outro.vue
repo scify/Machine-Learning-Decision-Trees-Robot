@@ -22,7 +22,7 @@
                     <div class="row d-flex justify-content-center align-content-center basic-box">
                         <div class="row col-12 h-25 justify-content-center p-3">
                             <div class="outro-text-1 col-10 align-self-center h-100 d-flex justify-content-center align-content-center">
-                                <div class="align-self-center"><b>Τί να θυμάστε από αυτή την άσκηση</b></div>
+                                <div class="align-self-center"><b>{{ $t('outro_what_to_remember') }}</b></div>
                             </div>
                         </div>
                         <div class="row col-12 h-75 justify-content-center no-gutters">
