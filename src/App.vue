@@ -134,6 +134,7 @@ export default {
             if (this.currentFrame === 10) {
                 this.currentFrame = 0;
             }
+            document.title = this.$t("page_title").toString();
         },
         fetchNextInstance() {
 
