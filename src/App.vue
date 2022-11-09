@@ -248,7 +248,7 @@ body {
     position: relative;
     top: 31%;
     left: 14%;
-    width: 49%;
+    width: 68%;
     height: 27%;
 }
 

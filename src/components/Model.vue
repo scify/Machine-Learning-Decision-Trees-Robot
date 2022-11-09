@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="h-100 w-25 d-flex justify-content-start">
                                     <div class="text-frame text-left align-self-center mr-3">
-                                        <span v-html="$t('i_think_its_a')"> </span> <b>{{ robotText }}</b>
+                                        <span v-html="$t('i_think_its_a')"> </span> <b class="ml-2">{{ robotText }}</b>
                                     </div>
                                 </div>
                             </div>
