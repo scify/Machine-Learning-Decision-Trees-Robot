@@ -4,7 +4,7 @@
   "description": "A Simple Machine Learning playground in JS",
   "author": "SciFY",
   "private": true,
-  "homepage": "git@github.com:scify/Machine-Learning-JS-playground",
+  "homepage": "https://ai.scify.org/courses/decision-trees/",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
