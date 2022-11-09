@@ -91,14 +91,11 @@ export default {
                 let img = new Image();
                 img.src = url;
                 img.onload = () => {
-                    console.log("Image:" + url + " preloaded");
                 };
             }
         },
         loadInitialImages() {
-            console.log("loadInitialImages", this.$i18n.locale);
             this.preLoadImage("introBackground", "introFrame/bg.jpg");
-            console.log("ready to preload", this.$i18n.locale);
             this.preLoadImage("introButton", this.$i18n.locale + "/introFrame/button-go.png");
             this.preLoadImage("introRobot", "introFrame/robot.png");
             this.preLoadImage("introText1", this.$i18n.locale + "/introFrame/text1.png");
