@@ -17,6 +17,20 @@ All dataset images are royalty-free and were taken from [Pexels](https://www.pex
 
 <div>Icons made by <a href="https://www.flaticon.com/authors/mavadee" title="mavadee">mavadee</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
 
+## Pre-setup steps
+
+Make sure the right NodeJS and npm versions are installed:
+
+```bash
+nvm install v14.19.2
+
+node -v
+v14.19.2
+
+npm -v
+6.14.17
+```
+
 ## Project setup
 ```
 npm install
