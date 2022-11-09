@@ -22,10 +22,10 @@ All dataset images are royalty-free and were taken from [Pexels](https://www.pex
 Make sure the right NodeJS and npm versions are installed:
 
 ```bash
-nvm install v14.19.2
+nvm install lts/fermium # (or nvm install v14.21.1)
 
 node -v
-v14.19.2
+v14.21.1
 
 npm -v
 6.14.17
