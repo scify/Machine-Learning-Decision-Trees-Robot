@@ -20,6 +20,8 @@ All dataset images are royalty-free and were taken from [Pexels](https://www.pex
 ## Project setup
 ```
 npm install
+
+cp .env.example .env
 ```
 
 ## Compiles and hot-reloads for development
