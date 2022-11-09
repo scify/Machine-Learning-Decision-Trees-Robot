@@ -1,6 +1,6 @@
 const hostname = process.env.INSTALLATION;
 let path = "/Machine-Learning-JS-playground/";
-if(hostname.includes("ai.scify.org"))
+if(hostname && hostname.includes("ai.scify.org"))
     path = "/courses/decision-trees/";
 
 module.exports = {

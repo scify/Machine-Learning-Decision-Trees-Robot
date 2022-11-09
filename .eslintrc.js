@@ -24,7 +24,7 @@ module.exports = {
         ]
     },
     parserOptions: {
-        parser: "babel-eslint"
+        parser: "vue-eslint-parser"
     },
     extends: [
         "plugin:vue/essential",
