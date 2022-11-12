@@ -43,6 +43,14 @@ jobs:
           name: page
           path: build
           if-no-files-found: error
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{steps.deployment.outputs.page_url}}
+
+    steps:
       - uses: actions/download-artifact@master
         with:
           name: page
@@ -52,4 +60,4 @@ jobs:
         with:
           path: .
       - id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@master
