@@ -38,7 +38,8 @@ jobs:
         run: |
           npm install
           npm run build
-      - uses: actions/upload-artifact@master
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
         with:
           name: page
           path: dist
@@ -57,13 +58,17 @@ jobs:
       url: ${{steps.deployment.outputs.page_url}}
 
     steps:
-      - uses: actions/download-artifact@master
+      - name: Download artifact
+        uses: actions/download-artifact@master
         with:
           name: page
           path: .
-      - uses: actions/configure-pages@v1
-      - uses: actions/upload-pages-artifact@v1
+      - name: Configure GitHub pages
+        uses: actions/configure-pages@v1
+      - name: Upload GitHub pages artifact
+        uses: actions/upload-pages-artifact@v1
         with:
           path: .
-      - id: deployment
+      - name: Deploy GitHub pages
+        id: deployment
         uses: actions/deploy-pages@master
