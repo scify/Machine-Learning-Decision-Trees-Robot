@@ -39,10 +39,17 @@ jobs:
           npm install
           npm run build
       - uses: actions/upload-artifact@master
+        with:
+          name: page
+          path: build
+          if-no-files-found: error
       - uses: actions/download-artifact@master
+        with:
+          name: page
+          path: .
       - uses: actions/configure-pages@v1
       - uses: actions/upload-pages-artifact@v1
         with:
-          path: ./dist
+          path: .
       - id: deployment
         uses: actions/deploy-pages@v1
