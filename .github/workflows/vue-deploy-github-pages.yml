@@ -27,7 +27,7 @@ jobs:
       - name: Set up the NodeJS environment
         uses: actions/setup-node@v3
         with:
-        node-version: 16
+          node-version: 16
 
       # Runs a single command using the runners shell
       - name: Intro
