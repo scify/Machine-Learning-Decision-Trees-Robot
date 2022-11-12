@@ -1,4 +1,4 @@
-# Machine-Learning-JS
+# Thales Machine-Learning-Robot
 
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -22,13 +22,13 @@ All dataset images are royalty-free and were taken from [Pexels](https://www.pex
 Make sure the right NodeJS and npm versions are installed:
 
 ```bash
-nvm install lts/fermium # (or nvm install v14.21.1)
+nvm install lts/gallium # (or nvm install v16.17.0)
 
 node -v
-v14.21.1
+v16.17.0
 
 npm -v
-6.14.17
+8.15.0
 ```
 
 ## Project setup

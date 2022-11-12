@@ -1,7 +1,7 @@
 {
   "name": "decision-tree-demo",
   "version": "3.0.0",
-  "description": "A Simple Machine Learning playground in JS",
+  "description": "An educational Machine Learning tool showcasing Decision Trees",
   "author": "SciFY",
   "private": true,
   "homepage": "https://ai.scify.org/courses/decision-trees/",
