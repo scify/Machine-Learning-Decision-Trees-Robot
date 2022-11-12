@@ -23,9 +23,7 @@ module.exports = {
             "always"
         ]
     },
-    parserOptions: {
-        parser: "vue-eslint-parser"
-    },
+    parser: "vue-eslint-parser",
     extends: [
         "plugin:vue/essential",
         'eslint:recommended',
