@@ -61,3 +61,5 @@ jobs:
           path: .
       - id: deployment
         uses: actions/deploy-pages@master
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
