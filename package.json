@@ -9,7 +9,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "deploy": "sh deploy.sh"
+    "deploy": "sh deploy.sh",
+    "build-gh-pages": "vue-cli-service build --dest docs"
   },
   "dependencies": {
     "bootstrap-vue": "^2.6.1",

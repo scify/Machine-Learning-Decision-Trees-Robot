@@ -37,4 +37,4 @@ jobs:
       - name: Build the app
         run: |
           npm install
-          npm run build
+          npm run build-gh-pages
