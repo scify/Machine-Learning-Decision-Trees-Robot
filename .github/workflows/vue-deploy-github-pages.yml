@@ -37,4 +37,12 @@ jobs:
       - name: Build the app
         run: |
           npm install
-          npm run build-gh-pages
+          npm run build
+      - uses: actions/upload-artifact@master
+      - uses: actions/download-artifact@master
+      - uses: actions/configure-pages@v1
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./dist
+      - id: deployment
+        uses: actions/deploy-pages@v1
