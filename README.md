@@ -5,6 +5,7 @@
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
 [![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://ai.scify.org/courses/decision-trees/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
+[![Vue Deploy to GitHub Pages](https://github.com/scify/Machine-Learning-Decision-Trees-Robot/actions/workflows/vue-deploy-github-pages.yml/badge.svg?branch=master&event=push)](https://github.com/scify/Machine-Learning-Decision-Trees-Robot/actions/workflows/vue-deploy-github-pages.yml)
 
 This is a playground for Machine Learning.
 It visualises a simple example in which the user is prompted to enrich the training set of a Decision Tree algorithm.
