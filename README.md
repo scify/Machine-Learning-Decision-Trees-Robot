@@ -3,13 +3,13 @@
 [![JavaScript Style Guide: Good Parts](https://img.shields.io/badge/code%20style-goodparts-brightgreen.svg?style=flat)](https://github.com/dwyl/goodparts "JavaScript The Good Parts")
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://GitHub.com/Naereen/StrapDown.js/graphs/commit-activity)
-[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://scify.github.io/Machine-Learning-JS-playground/)
+[![Website shields.io](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://ai.scify.org/courses/decision-trees/)
 [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/scify)
 
 This is a playground for Machine Learning.
 It visualises a simple example in which the user is prompted to enrich the training set of a Decision Tree algorithm.
 
-A demo (in English and Greek) can be found [here](https://scify.github.io/Machine-Learning-JS-playground/).
+A demo (in English and Greek) can be found [here](https://ai.scify.org/courses/decision-trees/).
 
 This project uses the [decision-tree-js](https://github.com/lagodiuk/decision-tree-js) library.
 
