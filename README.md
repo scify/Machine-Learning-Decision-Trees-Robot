@@ -32,30 +32,43 @@ npm -v
 6.14.17
 ```
 
-## Project setup
-```
-npm install
+If you are using [`nvm`](https://github.com/nvm-sh/nvm), run this command in order to sync to the correct NodeJS version for the project:
 
+```bash
+nvm use
+```
+
+## Project setup
+
+Install the npm dependencies:
+
+```bash
+npm install
+```
+
+Create the local `.env` file:
+
+```bash
 cp .env.example .env
 ```
 
-## Compiles and hot-reloads for development
-```
+## Compile and hot-reload for development
+```bash
 npm run serve
 ```
 
-## Compiles and minifies for production
-```
+## Compile and minify for production
+```bash
 npm run build
 ```
 
 ## Run your tests
-```
+```bash
 npm run test
 ```
 
 ## Lints and fixes files
-```
+```bash
 npm run lint
 ```
 
