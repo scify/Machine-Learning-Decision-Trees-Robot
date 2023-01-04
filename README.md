@@ -20,6 +20,8 @@ All dataset images are royalty-free and were taken from [Pexels](https://www.pex
 
 ## Pre-setup steps
 
+It is very easy to install multiple versions of nodejs and npm, by using [Node Version Manager (nvm)](https://github.com/creationix/nvm).
+
 Make sure the right NodeJS and npm versions are installed:
 
 ```bash
