@@ -32,7 +32,7 @@ npm -v
 6.14.17
 ```
 
-If you are using [`nvm`](https://github.com/nvm-sh/nvm), run this command in order to sync to the correct NodeJS version for the project:
+Alternatively, if you are using [`nvm`](https://github.com/nvm-sh/nvm), run this command in order to sync to the correct NodeJS version for the project:
 
 ```bash
 nvm use
