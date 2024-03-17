@@ -72,9 +72,9 @@ jobs:
       - name: Configure GitHub pages
         uses: actions/configure-pages@v1
       - name: Upload GitHub pages artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v2
         with:
           path: .
       - name: Deploy GitHub pages
         id: deployment
-        uses: actions/deploy-pages@master
+        uses: actions/deploy-pages@v3
