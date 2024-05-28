@@ -61,6 +61,7 @@ export default {
 		BasicFrame: () => import("./components/BasicFrame.vue"),
 		Model: () => import("./components/Model.vue"),
 		Outro: () => import("./components/Outro.vue"),
+		"cookies-consent": () => import("./components/CookiesConsent.vue"),
 	},
 	data() {
 		return {

@@ -10,7 +10,8 @@
     "build": "vite build",
     "serve": "vite preview",
     "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
-    "format": "prettier --write \"src/**/*\""
+    "format": "prettier --write \"src/**/*\"",
+    "test": "jest"
   },
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
@@ -26,11 +27,18 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^1.10.2",
+    "@vue/babel-preset-app": "^5.0.8",
+    "@vue/server-test-utils": "^1.3.0",
+    "@vue/test-utils": "^1.3.6",
+    "@vue/vue2-jest": "^28.1.0",
     "autoprefixer": "^6.7.7",
     "eslint-config-prettier": "^8.10.0",
+    "jest": "^28.1.3",
+    "jest-environment-jsdom": "^28.1.3",
     "prettier": "3.2.5",
     "sass": "^1.77.2",
     "vite": "^2.9.18",
-    "vite-plugin-vue2": "1.9.3"
+    "vite-plugin-vue2": "1.9.3",
+    "vue-server-renderer": "^2.7.16"
   }
 }
