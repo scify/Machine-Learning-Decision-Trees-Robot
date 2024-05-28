@@ -1,32 +1,36 @@
 {
   "name": "decision-tree-demo",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "An educational Machine Learning tool showcasing Decision Trees",
   "author": "SciFY",
   "private": true,
   "homepage": "https://ai.scify.org/courses/decision-trees/",
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "vite",
+    "build": "vite build",
+    "serve": "vite preview",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src",
+    "format": "prettier --write \"src/**/*\""
   },
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
+    "eslint": "^8.57.0",
+    "eslint-plugin-vue": "^8.7.1",
     "jquery": "^3.7.1",
     "lodash": "^4.17.21",
-    "vue": "^2.7.14",
+    "vue": "^2.7.16",
     "vue-cookies": "^1.8.4",
-    "vue-gtag": "^1.6.2",
-    "vue-i18n": "^8.27.1"
+    "vue-gtag": "^1.16.1",
+    "vue-i18n": "^8.28.2",
+    "vue-template-compiler": "^2.7.16"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^5.0.8",
-    "@vue/cli-plugin-eslint": "^3.12.1",
-    "@vue/cli-service": "^5.0.8",
-    "@vue/eslint-config-prettier": "^3.0.5",
-    "eslint-config-prettier": "^8.5.0",
+    "@vitejs/plugin-vue": "^1.10.2",
+    "autoprefixer": "^6.7.7",
+    "eslint-config-prettier": "^8.10.0",
+    "prettier": "3.2.5",
     "sass": "^1.77.2",
-    "sass-loader": "^7.3.1",
-    "vue-template-compiler": "^2.7.16"
+    "vite": "^2.9.18",
+    "vite-plugin-vue2": "1.9.3"
   }
 }
