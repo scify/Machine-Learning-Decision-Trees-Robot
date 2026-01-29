@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "bootstrap-vue": "^2.23.1",
-    "eslint": "^8.57.0",
-    "eslint-plugin-vue": "^8.7.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-vue": "^10.7.0",
     "jquery": "^3.7.1",
     "lodash": "^4.17.23",
     "vue": "^2.7.16",
