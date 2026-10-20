@@ -1,0 +1,54 @@
+# Dependabot configuration for a Laravel repository (Composer + npm + GitHub Actions).
+#
+# Strategy: security updates only.
+#   - `open-pull-requests-limit: 0` disables scheduled version updates for each
+#     ecosystem. Security (advisory-driven) PRs are not subject to this limit.
+#   - Security PRs per ecosystem are grouped into a single PR.
+#   - No `ignore` block: a security fix that exists only in a new major must
+#     still be proposed. Majors need manual review.
+#   - `schedule` is required by the schema but produces no PRs at limit 0.
+#
+# Security updates also require "Dependabot security updates" to be enabled in
+# the repository's Security settings.
+version: 2
+
+updates:
+    - package-ecosystem: npm
+      directory: /
+      schedule:
+          interval: weekly
+          day: monday
+          time: '06:00'
+          timezone: Etc/UTC
+      open-pull-requests-limit: 0
+      versioning-strategy: increase
+      labels:
+          - dependencies
+          - javascript
+      commit-message:
+          prefix: 'chore(deps)'
+          prefix-development: 'chore(deps-dev)'
+      groups:
+          npm-security:
+              applies-to: security-updates
+              patterns:
+                  - '*'
+
+    # Reads `uses:` lines in .github/workflows/*.yml. For this ecosystem `/`
+    # means .github/workflows, not the repository root.
+    - package-ecosystem: github-actions
+      directory: /
+      schedule:
+          interval: weekly
+          day: monday
+          time: '06:00'
+          timezone: Etc/UTC
+      open-pull-requests-limit: 0
+      labels:
+          - dependencies
+          - github-actions
+      groups:
+          github-actions-security:
+              applies-to: security-updates
+              patterns:
+                  - '*'
